@@ -1,0 +1,39 @@
+{
+    "TODO" : {
+        "GRAPHICS" : {
+            "[   ]" : "Create a basic character (32x64)",
+            "[   ]" : "Create a tilemap going from lowest type of ground to highest (32x32/each) ",
+            "[   ]" : "Create a basic UI",
+            "[   ]" : "Create a basic main menu",
+            "[   ]" : "Create a layer that blends with the time of the day and other light sources (**FUTURE**)",
+        },
+        "LOGICS" : {
+            "[ X ]" : "NORMALISING THE VELOCITY OF THE BODY .. Move the character with an angle and a calculated velocity",
+            "[ X ]" : "Dynamic input support system (LAMBDA AND MAP ('String', 'function'))",
+            "[   ]" : "Create a counter for the time of the day (8min * 20days*4seasons = approx 10.6 hours for a in-game year)",
+            "[   ]" : "Generating a procedural world map",
+            "[   ]" : "Create a save config file (with export and import)",            
+            "[   ]" : "Support XBOX Controller",
+            "[   ]" : "Create a basic inventory system",
+            "[   ]" : "Support sounds (Factory)",
+            "[   ]" : "Basic artificial intelligence (**FUTURE**)",
+        },
+        "DEBUG" : {
+            "[ X ]" : "FPS and MEM counter",
+            "[!!!]" : "** Watch for a solution about different keys w/ same action",
+            "[!!!]" : "** Watch for CPP compilation 'warning C4552: '!' : opérateur sans effet'",
+            "[!!!]" : "** Watch for 'AL lib: (EE) MMDevApiOpenPlayback: Device init failed: 0x80004005'",
+            "[   ]" : "Create custom error codes/messages for easy debug (just in case)",
+            "[   ]" : "In-game console for custom commands",
+        },
+        "OPTIMISATION" : {
+            "[   ]" : "",
+        },
+        "MISCELLANEOUS" : {
+            "[   ]" : "Add Konami Code Easter Egg",
+        }
+    },
+    "REMINDER" : {
+        "[   ]" : "KEEP MOD FRIENDLY"
+    }
+}
