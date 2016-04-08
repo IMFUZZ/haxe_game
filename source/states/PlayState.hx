@@ -20,31 +20,47 @@ using flixel.util.FlxSpriteUtil;
 
 class PlayState extends FlxState {
 
+	private var _tileSelected:FlxSprite;
+	private var _tilemap:FlxNapeTilemap;
+	private var _mapGenerator:MapGenerator;
+	private var _worldMap:Array<Array<Int>>;
+
 	override public function create():Void {
 		super.create();
+		_init();
+		_mapGenerator = new MapGenerator(513, 1.4);
+		_worldMap = _mapGenerator.generate();
+		_tilemap = new FlxNapeTilemap();
+		_tilemap.loadMapFrom2DArray(_worldMap, "assets/images/tilemap.png", 16, 16);
+		add(_tilemap);
 
-        FlxNapeSpace.init();
-        Shared.init();
-        FlxNapeSpace.drawDebug = true;
+		_tileSelected = new FlxSprite(0, 0);
+		_tileSelected.makeGraphic(Shared.TILE_WIDTH, Shared.TILE_HEIGHT, FlxColor.TRANSPARENT);
+		FlxSpriteUtil.drawRect(_tileSelected, 0, 0, Shared.TILE_WIDTH - 1, Shared.TILE_HEIGHT - 1, FlxColor.TRANSPARENT, { thickness: 1, color: FlxColor.RED });
+		add(_tileSelected);
 
-        add(Shared.player);
-        Shared.controller.insertAction(W, Shared.player.moveUp);
-        Shared.controller.insertAction(S, Shared.player.moveDown);
-        Shared.controller.insertAction(A, Shared.player.moveLeft);
-        Shared.controller.insertAction(D, Shared.player.moveRight);
-        Shared.controller.insertAction(UP, Shared.player.moveUp);
-        Shared.controller.insertAction(DOWN, Shared.player.moveDown);
-        Shared.controller.insertAction(LEFT, Shared.player.moveLeft);
-        Shared.controller.insertAction(RIGHT, Shared.player.moveRight);
-        Shared.controller.insertAction(SHIFT, Shared.player.run);
-        Shared.controller.insertAction(ESCAPE, function() { Sys.exit(0); return 0; });
+		add(Shared.player);
+		FlxG.camera.follow(Shared.player, 3);
+		FlxG.camera.antialiasing = false;
 	}
 
 	override public function update(elapsed:Float):Void {
 		super.update(elapsed);
-        Shared.player.beforeUpdate();
-        Shared.controller.update();
-        Shared.player.update(elapsed);
-        Shared.player.afterUpdate();
+		Shared.player.beforeUpdate();
+		Shared.controller.update();
+		// if (FlxG.collide(Shared.player, _tilemap)) trace("Colliding");
+		_tileSelected.x = Math.floor(FlxG.mouse.x / Shared.TILE_WIDTH) * Shared.TILE_WIDTH;
+		_tileSelected.y = Math.floor(FlxG.mouse.y / Shared.TILE_HEIGHT) * Shared.TILE_HEIGHT;
+		Shared.player.update(elapsed);
+		Shared.player.afterUpdate();
+	}
+
+
+	private function _init() {
+		FlxNapeSpace.init();
+		FlxNapeSpace.drawDebug = true;
+		Shared.init();
+		FlxG.worldBounds.setSize(1920, 1080);
+		FlxG.camera.zoom = 2;
 	}
 }

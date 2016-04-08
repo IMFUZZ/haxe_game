@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scene width="1920" height="1080" bgColor="black" name="in_game_hud" description="This is the in-game hud..." version="1.0">
+
+    <constants>
+        <const id="lives" type="Int" value="3" />
+        <const id="precise" type="Float" value="61.75848" />
+        <const id="raining" type="Bool" value="false" />
+        <const id="boss_name" type="String" value="Hades" />
+    </constants>
+
+    <layer id="HUD">
+        <text text="FlxScene" x="10" y="10" color="black" size="20" />
+        <text id="welcome_text" text="FlxText" x="300" y="100" size="40" font="consolas.ttf" color="black" alignment="left" borderStyle="outline" borderColor="red" borderSize="2" wordWrap="false" />
+        <button id="reset_state" text="Reset State" alignBottom="10" alignRight="10" />
+    </layer>
+    <layer id="second_layer"></layer>
+
+</scene>

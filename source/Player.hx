@@ -10,64 +10,63 @@ import flixel.addons.nape.FlxNapeSprite;
 import nape.constraint.PivotJoint;
 import nape.geom.Vec2;
 import nape.phys.Material;
+import nape.phys.BodyType;
 
 class Player extends FlxNapeSprite {
 
-    private var dragJoint:PivotJoint;
-    private var _movingSpeed:Int = 10;
-    private var _maxSpeed:Int = 25;
+	private var dragJoint:PivotJoint;
+	private var _walkSpeed:Float = 6;
+	private var _runSpeed:Float = 1;
+	private var _currentSpeed:Vec2;
 
-    public function new(?a_x:Float=0, ?a_y:Float=0) {
-        super(a_x, a_y);
+	public var isRunning:Bool = false;
 
-        makeGraphic(32, 64, FlxColor.BLUE);
+	public function new(?a_x:Float=0, ?a_y:Float=0) {
+		super(a_x, a_y);
 
-        createCircularBody(16);
-        setBodyMaterial(0, 0, 0);
+		_currentSpeed = new Vec2(0, 0);
 
-        body.userData.type = "player";
-        body.allowRotation = false;
+		loadGraphic("assets/images/character.png", true, 16, 32);
 
-        dragJoint = new PivotJoint(FlxNapeSpace.space.world, null, Vec2.weak(), Vec2.weak());
-        dragJoint.space = FlxNapeSpace.space;
-        dragJoint.active = false;
-        dragJoint.stiff = false;
-    }
+		createCircularBody(8, BodyType.DYNAMIC);
+		setBodyMaterial(0, 0, 0);
 
-    public function beforeUpdate():Void {
-        body.velocity.x = 0;
-        body.velocity.y = 0;
-        _movingSpeed = 10;
-    }    
+		body.userData.type = "player";
+		body.allowRotation = false;
 
-    override public function update(elapsed:Float):Void {
-        super.update(elapsed);
-    } 
+		// dragJoint = new PivotJoint(FlxNapeSpace.space.world, null, Vec2.weak(), Vec2.weak());
+		// dragJoint.space = FlxNapeSpace.space;
+		// dragJoint.active = false;
+		// dragJoint.stiff = false;
 
-    public function afterUpdate():Void {
-        if (body.velocity.y != 0 && body.velocity.x != 0) body.velocity.normalise();
-        body.velocity.x *= _movingSpeed * FlxG.elapsed * 1000;
-        body.velocity.y *= _movingSpeed * FlxG.elapsed * 1000;
-    }    
+	}
 
-    public function moveUp():Int {
-        if (body.velocity.y != -1) body.velocity.y--;
-        return 0;
-    }
-    public function moveDown():Int {
-        if (body.velocity.y != 1) body.velocity.y++;
-        return 0;
-    }
-    public function moveLeft():Int {
-        if (body.velocity.x != -1) body.velocity.x--;
-        return 0;
-    }
-    public function moveRight():Int {
-        if (body.velocity.x != 1) body.velocity.x++;
-        return 0;
-    }    
-    public function run():Int {
-        _movingSpeed = Std.int(1.5 * _movingSpeed);
-        return 0;
-    }
+	public function beforeUpdate():Void {
+
+	}    
+
+	override public function update(elapsed:Float):Void {
+		super.update(elapsed);
+	} 
+
+	public function afterUpdate():Void {
+		updateRun();
+		if (_currentSpeed.y != 0 && _currentSpeed.x != 0) _currentSpeed.normalise();
+		body.velocity.x = (5000 * (_currentSpeed.x * (FlxG.elapsed))) * _runSpeed;
+		body.velocity.y = (5000 * (_currentSpeed.y * (FlxG.elapsed))) * _runSpeed;
+		_currentSpeed.x = 0;
+		_currentSpeed.y = 0;
+	}
+
+	public function move(?a_x:Float = 0, ?a_y:Float = 0):Int {
+		
+		if (a_x != 0) _currentSpeed.x = a_x;
+		if (a_y != 0) _currentSpeed.y = a_y;
+		return 0;
+	}
+
+	private function updateRun() {
+		if (isRunning) _runSpeed = 1.5;
+		else _runSpeed = 1;
+	}
 }
