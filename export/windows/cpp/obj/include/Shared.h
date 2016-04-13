@@ -5,13 +5,16 @@
 #include <hxcpp.h>
 #endif
 
+HX_DECLARE_CLASS0(Clock)
 HX_DECLARE_CLASS0(CustomController)
+HX_DECLARE_CLASS0(Darkness)
 HX_DECLARE_CLASS0(Player)
 HX_DECLARE_CLASS0(Shared)
 HX_DECLARE_CLASS1(flixel,FlxBasic)
 HX_DECLARE_CLASS1(flixel,FlxObject)
 HX_DECLARE_CLASS1(flixel,FlxSprite)
 HX_DECLARE_CLASS3(flixel,addons,nape,FlxNapeSprite)
+HX_DECLARE_CLASS2(flixel,util,FlxTimer)
 HX_DECLARE_CLASS2(flixel,util,IFlxDestroyable)
 HX_DECLARE_CLASS1(haxe,IMap)
 HX_DECLARE_CLASS2(haxe,ds,IntMap)
@@ -42,7 +45,9 @@ class HXCPP_CLASS_ATTRIBUTES  Shared_obj : public hx::Object{
 		static int TILE_WIDTH;
 		static int TILE_HEIGHT;
 		static ::Player player;
+		static ::Clock clock;
 		static ::CustomController controller;
+		static ::Darkness darkness;
 		static ::haxe::ds::IntMap supportedKeys;
 		static ::haxe::ds::IntMap supportedButtons;
 		static Void init( );

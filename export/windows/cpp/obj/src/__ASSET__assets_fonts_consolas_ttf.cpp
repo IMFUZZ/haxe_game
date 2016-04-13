@@ -15,14 +15,14 @@
 
 Void __ASSET__assets_fonts_consolas_ttf_obj::__construct()
 {
-HX_STACK_FRAME("__ASSET__assets_fonts_consolas_ttf","new",0xb2a2d3e0,"__ASSET__assets_fonts_consolas_ttf.new","DefaultAssetLibrary.hx",517,0x0fc48912)
+HX_STACK_FRAME("__ASSET__assets_fonts_consolas_ttf","new",0xb2a2d3e0,"__ASSET__assets_fonts_consolas_ttf.new","DefaultAssetLibrary.hx",519,0x0fc48912)
 HX_STACK_THIS(this)
 {
-	HX_STACK_LINE(517)
+	HX_STACK_LINE(519)
 	super::__construct(null(),null(),null());
-	HX_STACK_LINE(517)
+	HX_STACK_LINE(519)
 	this->__fontPath = HX_HCSTRING("assets/fonts/consolas.ttf","\xef","\x8e","\xcd","\x5f");
-	HX_STACK_LINE(517)
+	HX_STACK_LINE(519)
 	this->fontName = HX_HCSTRING("Consolas","\xe0","\xb9","\x09","\x7c");
 }
 ;

@@ -14,8 +14,6 @@ HX_DECLARE_CLASS1(flixel,FlxObject)
 HX_DECLARE_CLASS1(flixel,FlxSprite)
 HX_DECLARE_CLASS3(flixel,addons,nape,FlxNapeSprite)
 HX_DECLARE_CLASS2(flixel,util,IFlxDestroyable)
-HX_DECLARE_CLASS2(nape,constraint,Constraint)
-HX_DECLARE_CLASS2(nape,constraint,PivotJoint)
 HX_DECLARE_CLASS2(nape,geom,Vec2)
 
 
@@ -43,8 +41,6 @@ class HXCPP_CLASS_ATTRIBUTES  Player_obj : public ::flixel::addons::nape::FlxNap
 		void __Visit(HX_VISIT_PARAMS);
 		::String __ToString() const { return HX_HCSTRING("Player","\x81","\x5f","\x4d","\x6c"); }
 
-		::nape::constraint::PivotJoint dragJoint;
-		Float _walkSpeed;
 		Float _runSpeed;
 		::nape::geom::Vec2 _currentSpeed;
 		bool isRunning;

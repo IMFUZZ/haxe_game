@@ -6,7 +6,9 @@ class Shared {
 	public static inline var TILE_WIDTH:Int = 16;
 	public static inline var TILE_HEIGHT:Int = 16;
 	public static var player:Player;
+	public static var clock:Clock;
 	public static var controller:CustomController; 
+	public static var darkness:Darkness; 
 	public static var supportedKeys:Map<Int, String> = [
 		-2  => "ANY",
 		-1  => "NONE",
@@ -145,6 +147,8 @@ class Shared {
 
 	public static function init() {
 		player = new Player(100, 100);
+		clock = new Clock();
 		controller = new CustomController(); 
+		darkness = new Darkness(0, 0);
 	}
 }

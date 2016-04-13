@@ -924,12 +924,6 @@
 #ifndef INCLUDED_Shared
 #include <Shared.h>
 #endif
-#ifndef INCLUDED_flixel_FlxObject
-#include <flixel/FlxObject.h>
-#endif
-#ifndef INCLUDED_flixel_math_FlxRect
-#include <flixel/math/FlxRect.h>
-#endif
 #ifndef INCLUDED_EReg
 #include <EReg.h>
 #endif
@@ -959,6 +953,12 @@
 #endif
 #ifndef INCLUDED_DefaultAssetLibrary
 #include <DefaultAssetLibrary.h>
+#endif
+#ifndef INCLUDED_flixel_FlxObject
+#include <flixel/FlxObject.h>
+#endif
+#ifndef INCLUDED_flixel_math_FlxRect
+#include <flixel/math/FlxRect.h>
 #endif
 #ifndef INCLUDED_openfl__legacy_display_DisplayObjectContainer
 #include <openfl/_legacy/display/DisplayObjectContainer.h>
@@ -1695,9 +1695,6 @@
 #ifndef INCLUDED_flixel_util_FlxTimerManager
 #include <flixel/util/FlxTimerManager.h>
 #endif
-#ifndef INCLUDED_flixel_util_FlxTimer
-#include <flixel/util/FlxTimer.h>
-#endif
 #ifndef INCLUDED_flixel_util_FlxStringUtil
 #include <flixel/util/FlxStringUtil.h>
 #endif
@@ -2106,6 +2103,9 @@
 #ifndef INCLUDED_Type
 #include <Type.h>
 #endif
+#ifndef INCLUDED_TimeEvent
+#include <TimeEvent.h>
+#endif
 #ifndef INCLUDED_StringTools
 #include <StringTools.h>
 #endif
@@ -2120,24 +2120,6 @@
 #endif
 #ifndef INCLUDED_flixel_addons_nape_FlxNapeSprite
 #include <flixel/addons/nape/FlxNapeSprite.h>
-#endif
-#ifndef INCLUDED_flixel_FlxSprite
-#include <flixel/FlxSprite.h>
-#endif
-#ifndef INCLUDED_flixel_util_FlxPool_flixel_math_FlxRect
-#include <flixel/util/FlxPool_flixel_math_FlxRect.h>
-#endif
-#ifndef INCLUDED_flixel_util_IFlxPool
-#include <flixel/util/IFlxPool.h>
-#endif
-#ifndef INCLUDED_flixel_util_IFlxPooled
-#include <flixel/util/IFlxPooled.h>
-#endif
-#ifndef INCLUDED_flixel_FlxBasic
-#include <flixel/FlxBasic.h>
-#endif
-#ifndef INCLUDED_flixel_util_IFlxDestroyable
-#include <flixel/util/IFlxDestroyable.h>
 #endif
 #ifndef INCLUDED_MapGenerator
 #include <MapGenerator.h>
@@ -2163,8 +2145,35 @@
 #ifndef INCLUDED_Date
 #include <Date.h>
 #endif
+#ifndef INCLUDED_Darkness
+#include <Darkness.h>
+#endif
+#ifndef INCLUDED_flixel_FlxSprite
+#include <flixel/FlxSprite.h>
+#endif
+#ifndef INCLUDED_flixel_util_FlxPool_flixel_math_FlxRect
+#include <flixel/util/FlxPool_flixel_math_FlxRect.h>
+#endif
+#ifndef INCLUDED_flixel_util_IFlxPool
+#include <flixel/util/IFlxPool.h>
+#endif
+#ifndef INCLUDED_flixel_util_IFlxPooled
+#include <flixel/util/IFlxPooled.h>
+#endif
+#ifndef INCLUDED_flixel_FlxBasic
+#include <flixel/FlxBasic.h>
+#endif
 #ifndef INCLUDED_CustomController
 #include <CustomController.h>
+#endif
+#ifndef INCLUDED_Clock
+#include <Clock.h>
+#endif
+#ifndef INCLUDED_flixel_util_FlxTimer
+#include <flixel/util/FlxTimer.h>
+#endif
+#ifndef INCLUDED_flixel_util_IFlxDestroyable
+#include <flixel/util/IFlxDestroyable.h>
 #endif
 #ifndef INCLUDED_DocumentClass
 #include <DocumentClass.h>
@@ -2517,8 +2526,6 @@ hx::RegisterResources( hx::GetResources() );
 ::debug::_SystemUsage::Consolas_obj::__register();
 ::Xml_obj::__register();
 ::Shared_obj::__register();
-::flixel::FlxObject_obj::__register();
-::flixel::math::FlxRect_obj::__register();
 ::EReg_obj::__register();
 ::__ASSET__flixel_images_ui_button_png_obj::__register();
 ::openfl::_legacy::display::BitmapData_obj::__register();
@@ -2529,6 +2536,8 @@ hx::RegisterResources( hx::GetResources() );
 ::__ASSET__flixel_sounds_beep_ogg_obj::__register();
 ::openfl::_legacy::media::Sound_obj::__register();
 ::DefaultAssetLibrary_obj::__register();
+::flixel::FlxObject_obj::__register();
+::flixel::math::FlxRect_obj::__register();
 ::openfl::_legacy::display::DisplayObjectContainer_obj::__register();
 ::openfl::_legacy::display::InteractiveObject_obj::__register();
 ::openfl::_legacy::display::DisplayObject_obj::__register();
@@ -2774,7 +2783,6 @@ hx::RegisterResources( hx::GetResources() );
 ::haxe::CallStack_obj::__register();
 ::flixel::util::helpers::FlxRange_obj::__register();
 ::flixel::util::FlxTimerManager_obj::__register();
-::flixel::util::FlxTimer_obj::__register();
 ::flixel::util::FlxStringUtil_obj::__register();
 ::flixel::util::_FlxSignal::Macro_obj::__register();
 ::flixel::util::_FlxSignal::FlxSignal4_obj::__register();
@@ -2911,17 +2919,12 @@ hx::RegisterResources( hx::GetResources() );
 ::cpp::vm::Mutex_obj::__register();
 ::cpp::vm::Gc_obj::__register();
 ::Type_obj::__register();
+::TimeEvent_obj::__register();
 ::StringTools_obj::__register();
 ::StringBuf_obj::__register();
 ::Reflect_obj::__register();
 ::Player_obj::__register();
 ::flixel::addons::nape::FlxNapeSprite_obj::__register();
-::flixel::FlxSprite_obj::__register();
-::flixel::util::FlxPool_flixel_math_FlxRect_obj::__register();
-::flixel::util::IFlxPool_obj::__register();
-::flixel::util::IFlxPooled_obj::__register();
-::flixel::FlxBasic_obj::__register();
-::flixel::util::IFlxDestroyable_obj::__register();
 ::MapGenerator_obj::__register();
 ::_List::ListIterator_obj::__register();
 ::List_obj::__register();
@@ -2930,7 +2933,16 @@ hx::RegisterResources( hx::GetResources() );
 ::cpp::vm::Deque_obj::__register();
 ::openfl::_legacy::AssetLibrary_obj::__register();
 ::Date_obj::__register();
+::Darkness_obj::__register();
+::flixel::FlxSprite_obj::__register();
+::flixel::util::FlxPool_flixel_math_FlxRect_obj::__register();
+::flixel::util::IFlxPool_obj::__register();
+::flixel::util::IFlxPooled_obj::__register();
+::flixel::FlxBasic_obj::__register();
 ::CustomController_obj::__register();
+::Clock_obj::__register();
+::flixel::util::FlxTimer_obj::__register();
+::flixel::util::IFlxDestroyable_obj::__register();
 ::DocumentClass_obj::__register();
 ::Main_obj::__register();
 ::openfl::_legacy::display::Sprite_obj::__register();
@@ -3002,6 +3014,8 @@ hx::RegisterResources( hx::GetResources() );
 ::openfl::_legacy::display::DisplayObject_obj::__boot();
 ::openfl::_legacy::display::InteractiveObject_obj::__boot();
 ::openfl::_legacy::display::DisplayObjectContainer_obj::__boot();
+::flixel::math::FlxRect_obj::__boot();
+::flixel::FlxObject_obj::__boot();
 ::DefaultAssetLibrary_obj::__boot();
 ::openfl::_legacy::media::Sound_obj::__boot();
 ::__ASSET__flixel_sounds_beep_ogg_obj::__boot();
@@ -3011,8 +3025,6 @@ hx::RegisterResources( hx::GetResources() );
 ::__ASSET__flixel_fonts_monsterrat_ttf_obj::__boot();
 ::openfl::_legacy::display::BitmapData_obj::__boot();
 ::__ASSET__flixel_images_ui_button_png_obj::__boot();
-::flixel::math::FlxRect_obj::__boot();
-::flixel::FlxObject_obj::__boot();
 ::Shared_obj::__boot();
 ::Xml_obj::__boot();
 ::debug::_SystemUsage::Consolas_obj::__boot();

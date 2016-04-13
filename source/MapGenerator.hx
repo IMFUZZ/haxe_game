@@ -11,7 +11,7 @@ class MapGenerator {
 
     public function new(a_size:Int, a_displacement:Float):Void {
         //  Must be 2^n + 1
-        _size = a_size;
+        _size = Std.int(Math.pow(2, a_size)+1);
         _displacement = a_displacement;
         table = new Array();
     }

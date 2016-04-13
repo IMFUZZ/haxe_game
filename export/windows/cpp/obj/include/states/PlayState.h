@@ -47,6 +47,8 @@ class HXCPP_CLASS_ATTRIBUTES  PlayState_obj : public ::flixel::FlxState_obj{
 		::String __ToString() const { return HX_HCSTRING("PlayState","\x5d","\x83","\xc2","\x46"); }
 
 		::flixel::FlxSprite _tileSelected;
+		::flixel::FlxSprite _shadowLayer;
+		::flixel::FlxSprite testLight;
 		::flixel::addons::nape::FlxNapeTilemap _tilemap;
 		::MapGenerator _mapGenerator;
 		Array< ::Dynamic > _worldMap;

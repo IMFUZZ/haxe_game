@@ -1,5 +1,8 @@
 #include <hxcpp.h>
 
+#ifndef INCLUDED_Clock
+#include <Clock.h>
+#endif
 #ifndef INCLUDED_CustomController
 #include <CustomController.h>
 #endif
@@ -72,6 +75,9 @@
 #ifndef INCLUDED_flixel_input_keyboard_FlxKeyboard
 #include <flixel/input/keyboard/FlxKeyboard.h>
 #endif
+#ifndef INCLUDED_flixel_util_FlxTimer
+#include <flixel/util/FlxTimer.h>
+#endif
 #ifndef INCLUDED_flixel_util_IFlxDestroyable
 #include <flixel/util/IFlxDestroyable.h>
 #endif
@@ -102,7 +108,7 @@ HX_STACK_THIS(this)
 		tmp = tmp2;
 	}
 	HX_STACK_LINE(40)
-	this->keyboardActionsOnPressed = tmp;
+	this->keyboardEventsOnPressed = tmp;
 	HX_STACK_LINE(41)
 	::haxe::ds::IntMap tmp1;		HX_STACK_VAR(tmp1,"tmp1");
 	HX_STACK_LINE(41)
@@ -115,7 +121,7 @@ HX_STACK_THIS(this)
 		tmp1 = tmp3;
 	}
 	HX_STACK_LINE(41)
-	this->keyboardActionsOnJustPressed = tmp1;
+	this->keyboardEventsOnJustPressed = tmp1;
 	HX_STACK_LINE(42)
 	::haxe::ds::IntMap tmp2;		HX_STACK_VAR(tmp2,"tmp2");
 	HX_STACK_LINE(42)
@@ -128,7 +134,7 @@ HX_STACK_THIS(this)
 		tmp2 = tmp4;
 	}
 	HX_STACK_LINE(42)
-	this->keyboardActionsOnJustReleased = tmp2;
+	this->keyboardEventsOnJustReleased = tmp2;
 	HX_STACK_LINE(43)
 	::haxe::ds::IntMap tmp3;		HX_STACK_VAR(tmp3,"tmp3");
 	HX_STACK_LINE(43)
@@ -141,7 +147,7 @@ HX_STACK_THIS(this)
 		tmp3 = tmp5;
 	}
 	HX_STACK_LINE(43)
-	this->gamepadActionsOnPressed = tmp3;
+	this->gamepadEventsOnPressed = tmp3;
 	HX_STACK_LINE(44)
 	::haxe::ds::IntMap tmp4;		HX_STACK_VAR(tmp4,"tmp4");
 	HX_STACK_LINE(44)
@@ -154,7 +160,7 @@ HX_STACK_THIS(this)
 		tmp4 = tmp6;
 	}
 	HX_STACK_LINE(44)
-	this->gamepadActionsOnJustPressed = tmp4;
+	this->gamepadEventsOnJustPressed = tmp4;
 	HX_STACK_LINE(45)
 	::haxe::ds::IntMap tmp5;		HX_STACK_VAR(tmp5,"tmp5");
 	HX_STACK_LINE(45)
@@ -167,9 +173,9 @@ HX_STACK_THIS(this)
 		tmp5 = tmp7;
 	}
 	HX_STACK_LINE(45)
-	this->gamepadActionsOnJustReleased = tmp5;
+	this->gamepadEventsOnJustReleased = tmp5;
 	HX_STACK_LINE(46)
-	this->initDefaultActions();
+	this->initDefaultEvents();
 }
 ;
 	return null();
@@ -188,14 +194,14 @@ Dynamic CustomController_obj::__Create(hx::DynamicArray inArgs)
 	_result_->__construct();
 	return _result_;}
 
-Void CustomController_obj::insertKeyboardActionOnPressed( int a_actionKey,Dynamic a_action){
+Void CustomController_obj::addKeyboardEventOnPressed( int a_actionKey,Dynamic a_action){
 {
-		HX_STACK_FRAME("CustomController","insertKeyboardActionOnPressed",0xbf4c112c,"CustomController.insertKeyboardActionOnPressed","CustomController.hx",19,0x79fa7911)
+		HX_STACK_FRAME("CustomController","addKeyboardEventOnPressed",0x4d64dff0,"CustomController.addKeyboardEventOnPressed","CustomController.hx",19,0x79fa7911)
 		HX_STACK_THIS(this)
 		HX_STACK_ARG(a_actionKey,"a_actionKey")
 		HX_STACK_ARG(a_action,"a_action")
 		HX_STACK_LINE(20)
-		::haxe::ds::IntMap tmp = this->keyboardActionsOnPressed;		HX_STACK_VAR(tmp,"tmp");
+		::haxe::ds::IntMap tmp = this->keyboardEventsOnPressed;		HX_STACK_VAR(tmp,"tmp");
 		HX_STACK_LINE(20)
 		int tmp1 = a_actionKey;		HX_STACK_VAR(tmp1,"tmp1");
 		HX_STACK_LINE(20)
@@ -207,16 +213,16 @@ return null();
 }
 
 
-HX_DEFINE_DYNAMIC_FUNC2(CustomController_obj,insertKeyboardActionOnPressed,(void))
+HX_DEFINE_DYNAMIC_FUNC2(CustomController_obj,addKeyboardEventOnPressed,(void))
 
-Void CustomController_obj::insertKeyboardActionOnJustPressed( int a_actionKey,Dynamic a_action){
+Void CustomController_obj::addKeyboardEventOnJustPressed( int a_actionKey,Dynamic a_action){
 {
-		HX_STACK_FRAME("CustomController","insertKeyboardActionOnJustPressed",0xdbcf5960,"CustomController.insertKeyboardActionOnJustPressed","CustomController.hx",22,0x79fa7911)
+		HX_STACK_FRAME("CustomController","addKeyboardEventOnJustPressed",0xbbf0da24,"CustomController.addKeyboardEventOnJustPressed","CustomController.hx",22,0x79fa7911)
 		HX_STACK_THIS(this)
 		HX_STACK_ARG(a_actionKey,"a_actionKey")
 		HX_STACK_ARG(a_action,"a_action")
 		HX_STACK_LINE(23)
-		::haxe::ds::IntMap tmp = this->keyboardActionsOnJustPressed;		HX_STACK_VAR(tmp,"tmp");
+		::haxe::ds::IntMap tmp = this->keyboardEventsOnJustPressed;		HX_STACK_VAR(tmp,"tmp");
 		HX_STACK_LINE(23)
 		int tmp1 = a_actionKey;		HX_STACK_VAR(tmp1,"tmp1");
 		HX_STACK_LINE(23)
@@ -228,16 +234,16 @@ return null();
 }
 
 
-HX_DEFINE_DYNAMIC_FUNC2(CustomController_obj,insertKeyboardActionOnJustPressed,(void))
+HX_DEFINE_DYNAMIC_FUNC2(CustomController_obj,addKeyboardEventOnJustPressed,(void))
 
-Void CustomController_obj::insertKeyboardActionOnJustReleased( int a_actionKey,Dynamic a_action){
+Void CustomController_obj::addKeyboardEventOnJustReleased( int a_actionKey,Dynamic a_action){
 {
-		HX_STACK_FRAME("CustomController","insertKeyboardActionOnJustReleased",0x8074e83f,"CustomController.insertKeyboardActionOnJustReleased","CustomController.hx",25,0x79fa7911)
+		HX_STACK_FRAME("CustomController","addKeyboardEventOnJustReleased",0xbda412fb,"CustomController.addKeyboardEventOnJustReleased","CustomController.hx",25,0x79fa7911)
 		HX_STACK_THIS(this)
 		HX_STACK_ARG(a_actionKey,"a_actionKey")
 		HX_STACK_ARG(a_action,"a_action")
 		HX_STACK_LINE(26)
-		::haxe::ds::IntMap tmp = this->keyboardActionsOnJustReleased;		HX_STACK_VAR(tmp,"tmp");
+		::haxe::ds::IntMap tmp = this->keyboardEventsOnJustReleased;		HX_STACK_VAR(tmp,"tmp");
 		HX_STACK_LINE(26)
 		int tmp1 = a_actionKey;		HX_STACK_VAR(tmp1,"tmp1");
 		HX_STACK_LINE(26)
@@ -249,16 +255,16 @@ return null();
 }
 
 
-HX_DEFINE_DYNAMIC_FUNC2(CustomController_obj,insertKeyboardActionOnJustReleased,(void))
+HX_DEFINE_DYNAMIC_FUNC2(CustomController_obj,addKeyboardEventOnJustReleased,(void))
 
-Void CustomController_obj::insertGamepadActionOnPressed( int a_actionKey,Dynamic a_action){
+Void CustomController_obj::addGamepadEventOnPressed( int a_actionKey,Dynamic a_action){
 {
-		HX_STACK_FRAME("CustomController","insertGamepadActionOnPressed",0x06bd5266,"CustomController.insertGamepadActionOnPressed","CustomController.hx",29,0x79fa7911)
+		HX_STACK_FRAME("CustomController","addGamepadEventOnPressed",0x743cb72a,"CustomController.addGamepadEventOnPressed","CustomController.hx",29,0x79fa7911)
 		HX_STACK_THIS(this)
 		HX_STACK_ARG(a_actionKey,"a_actionKey")
 		HX_STACK_ARG(a_action,"a_action")
 		HX_STACK_LINE(30)
-		::haxe::ds::IntMap tmp = this->gamepadActionsOnPressed;		HX_STACK_VAR(tmp,"tmp");
+		::haxe::ds::IntMap tmp = this->gamepadEventsOnPressed;		HX_STACK_VAR(tmp,"tmp");
 		HX_STACK_LINE(30)
 		int tmp1 = a_actionKey;		HX_STACK_VAR(tmp1,"tmp1");
 		HX_STACK_LINE(30)
@@ -270,16 +276,16 @@ return null();
 }
 
 
-HX_DEFINE_DYNAMIC_FUNC2(CustomController_obj,insertGamepadActionOnPressed,(void))
+HX_DEFINE_DYNAMIC_FUNC2(CustomController_obj,addGamepadEventOnPressed,(void))
 
-Void CustomController_obj::insertGamepadActionOnJustPressed( int a_actionKey,Dynamic a_action){
+Void CustomController_obj::addGamepadEventOnJustPressed( int a_actionKey,Dynamic a_action){
 {
-		HX_STACK_FRAME("CustomController","insertGamepadActionOnJustPressed",0xa0b2bf9a,"CustomController.insertGamepadActionOnJustPressed","CustomController.hx",32,0x79fa7911)
+		HX_STACK_FRAME("CustomController","addGamepadEventOnJustPressed",0x263dd65e,"CustomController.addGamepadEventOnJustPressed","CustomController.hx",32,0x79fa7911)
 		HX_STACK_THIS(this)
 		HX_STACK_ARG(a_actionKey,"a_actionKey")
 		HX_STACK_ARG(a_action,"a_action")
 		HX_STACK_LINE(33)
-		::haxe::ds::IntMap tmp = this->gamepadActionsOnJustPressed;		HX_STACK_VAR(tmp,"tmp");
+		::haxe::ds::IntMap tmp = this->gamepadEventsOnJustPressed;		HX_STACK_VAR(tmp,"tmp");
 		HX_STACK_LINE(33)
 		int tmp1 = a_actionKey;		HX_STACK_VAR(tmp1,"tmp1");
 		HX_STACK_LINE(33)
@@ -291,16 +297,16 @@ return null();
 }
 
 
-HX_DEFINE_DYNAMIC_FUNC2(CustomController_obj,insertGamepadActionOnJustPressed,(void))
+HX_DEFINE_DYNAMIC_FUNC2(CustomController_obj,addGamepadEventOnJustPressed,(void))
 
-Void CustomController_obj::insertGamepadActionOnJustReleased( int a_actionKey,Dynamic a_action){
+Void CustomController_obj::addGamepadEventOnJustReleased( int a_actionKey,Dynamic a_action){
 {
-		HX_STACK_FRAME("CustomController","insertGamepadActionOnJustReleased",0x028af4c5,"CustomController.insertGamepadActionOnJustReleased","CustomController.hx",35,0x79fa7911)
+		HX_STACK_FRAME("CustomController","addGamepadEventOnJustReleased",0x56b3c981,"CustomController.addGamepadEventOnJustReleased","CustomController.hx",35,0x79fa7911)
 		HX_STACK_THIS(this)
 		HX_STACK_ARG(a_actionKey,"a_actionKey")
 		HX_STACK_ARG(a_action,"a_action")
 		HX_STACK_LINE(36)
-		::haxe::ds::IntMap tmp = this->gamepadActionsOnJustReleased;		HX_STACK_VAR(tmp,"tmp");
+		::haxe::ds::IntMap tmp = this->gamepadEventsOnJustReleased;		HX_STACK_VAR(tmp,"tmp");
 		HX_STACK_LINE(36)
 		int tmp1 = a_actionKey;		HX_STACK_VAR(tmp1,"tmp1");
 		HX_STACK_LINE(36)
@@ -312,7 +318,7 @@ return null();
 }
 
 
-HX_DEFINE_DYNAMIC_FUNC2(CustomController_obj,insertGamepadActionOnJustReleased,(void))
+HX_DEFINE_DYNAMIC_FUNC2(CustomController_obj,addGamepadEventOnJustReleased,(void))
 
 Void CustomController_obj::update( ){
 {
@@ -386,7 +392,7 @@ Void CustomController_obj::update( ){
 			HX_STACK_LINE(52)
 			if ((tmp6)){
 				HX_STACK_LINE(53)
-				::haxe::ds::IntMap tmp7 = this->gamepadActionsOnPressed;		HX_STACK_VAR(tmp7,"tmp7");
+				::haxe::ds::IntMap tmp7 = this->gamepadEventsOnPressed;		HX_STACK_VAR(tmp7,"tmp7");
 				HX_STACK_LINE(53)
 				Dynamic tmp8 = tmp7->get((int)19);		HX_STACK_VAR(tmp8,"tmp8");
 				HX_STACK_LINE(53)
@@ -452,7 +458,7 @@ Void CustomController_obj::update( ){
 			HX_STACK_LINE(55)
 			if ((tmp10)){
 				HX_STACK_LINE(56)
-				::haxe::ds::IntMap tmp11 = this->gamepadActionsOnPressed;		HX_STACK_VAR(tmp11,"tmp11");
+				::haxe::ds::IntMap tmp11 = this->gamepadEventsOnPressed;		HX_STACK_VAR(tmp11,"tmp11");
 				HX_STACK_LINE(56)
 				Dynamic tmp12 = tmp11->get((int)20);		HX_STACK_VAR(tmp12,"tmp12");
 				HX_STACK_LINE(56)
@@ -461,7 +467,7 @@ Void CustomController_obj::update( ){
 				tmp13().Cast< int >();
 			}
 			HX_STACK_LINE(58)
-			::haxe::ds::IntMap tmp11 = this->gamepadActionsOnPressed;		HX_STACK_VAR(tmp11,"tmp11");
+			::haxe::ds::IntMap tmp11 = this->gamepadEventsOnPressed;		HX_STACK_VAR(tmp11,"tmp11");
 			HX_STACK_LINE(58)
 			Dynamic tmp12 = tmp11->keys();		HX_STACK_VAR(tmp12,"tmp12");
 			HX_STACK_LINE(58)
@@ -485,7 +491,7 @@ Void CustomController_obj::update( ){
 					HX_STACK_LINE(59)
 					if ((tmp19)){
 						HX_STACK_LINE(60)
-						::haxe::ds::IntMap tmp20 = this->gamepadActionsOnPressed;		HX_STACK_VAR(tmp20,"tmp20");
+						::haxe::ds::IntMap tmp20 = this->gamepadEventsOnPressed;		HX_STACK_VAR(tmp20,"tmp20");
 						HX_STACK_LINE(60)
 						int tmp21 = buttonID;		HX_STACK_VAR(tmp21,"tmp21");
 						HX_STACK_LINE(60)
@@ -499,7 +505,7 @@ Void CustomController_obj::update( ){
 ;
 			}
 			HX_STACK_LINE(63)
-			::haxe::ds::IntMap tmp13 = this->gamepadActionsOnJustPressed;		HX_STACK_VAR(tmp13,"tmp13");
+			::haxe::ds::IntMap tmp13 = this->gamepadEventsOnJustPressed;		HX_STACK_VAR(tmp13,"tmp13");
 			HX_STACK_LINE(63)
 			Dynamic tmp14 = tmp13->keys();		HX_STACK_VAR(tmp14,"tmp14");
 			HX_STACK_LINE(63)
@@ -523,7 +529,7 @@ Void CustomController_obj::update( ){
 					HX_STACK_LINE(64)
 					if ((tmp21)){
 						HX_STACK_LINE(65)
-						::haxe::ds::IntMap tmp22 = this->gamepadActionsOnJustPressed;		HX_STACK_VAR(tmp22,"tmp22");
+						::haxe::ds::IntMap tmp22 = this->gamepadEventsOnJustPressed;		HX_STACK_VAR(tmp22,"tmp22");
 						HX_STACK_LINE(65)
 						int tmp23 = buttonID;		HX_STACK_VAR(tmp23,"tmp23");
 						HX_STACK_LINE(65)
@@ -537,7 +543,7 @@ Void CustomController_obj::update( ){
 ;
 			}
 			HX_STACK_LINE(68)
-			::haxe::ds::IntMap tmp15 = this->gamepadActionsOnJustReleased;		HX_STACK_VAR(tmp15,"tmp15");
+			::haxe::ds::IntMap tmp15 = this->gamepadEventsOnJustReleased;		HX_STACK_VAR(tmp15,"tmp15");
 			HX_STACK_LINE(68)
 			Dynamic tmp16 = tmp15->keys();		HX_STACK_VAR(tmp16,"tmp16");
 			HX_STACK_LINE(68)
@@ -561,7 +567,7 @@ Void CustomController_obj::update( ){
 					HX_STACK_LINE(69)
 					if ((tmp23)){
 						HX_STACK_LINE(70)
-						::haxe::ds::IntMap tmp24 = this->gamepadActionsOnJustReleased;		HX_STACK_VAR(tmp24,"tmp24");
+						::haxe::ds::IntMap tmp24 = this->gamepadEventsOnJustReleased;		HX_STACK_VAR(tmp24,"tmp24");
 						HX_STACK_LINE(70)
 						int tmp25 = buttonID;		HX_STACK_VAR(tmp25,"tmp25");
 						HX_STACK_LINE(70)
@@ -576,7 +582,7 @@ Void CustomController_obj::update( ){
 			}
 		}
 		HX_STACK_LINE(74)
-		::haxe::ds::IntMap tmp3 = this->keyboardActionsOnPressed;		HX_STACK_VAR(tmp3,"tmp3");
+		::haxe::ds::IntMap tmp3 = this->keyboardEventsOnPressed;		HX_STACK_VAR(tmp3,"tmp3");
 		HX_STACK_LINE(74)
 		Dynamic tmp4 = tmp3->keys();		HX_STACK_VAR(tmp4,"tmp4");
 		HX_STACK_LINE(74)
@@ -600,7 +606,7 @@ Void CustomController_obj::update( ){
 				HX_STACK_LINE(75)
 				if ((tmp11)){
 					HX_STACK_LINE(76)
-					::haxe::ds::IntMap tmp12 = this->keyboardActionsOnPressed;		HX_STACK_VAR(tmp12,"tmp12");
+					::haxe::ds::IntMap tmp12 = this->keyboardEventsOnPressed;		HX_STACK_VAR(tmp12,"tmp12");
 					HX_STACK_LINE(76)
 					int tmp13 = keyID;		HX_STACK_VAR(tmp13,"tmp13");
 					HX_STACK_LINE(76)
@@ -614,7 +620,7 @@ Void CustomController_obj::update( ){
 ;
 		}
 		HX_STACK_LINE(79)
-		::haxe::ds::IntMap tmp5 = this->keyboardActionsOnJustPressed;		HX_STACK_VAR(tmp5,"tmp5");
+		::haxe::ds::IntMap tmp5 = this->keyboardEventsOnJustPressed;		HX_STACK_VAR(tmp5,"tmp5");
 		HX_STACK_LINE(79)
 		Dynamic tmp6 = tmp5->keys();		HX_STACK_VAR(tmp6,"tmp6");
 		HX_STACK_LINE(79)
@@ -638,7 +644,7 @@ Void CustomController_obj::update( ){
 				HX_STACK_LINE(80)
 				if ((tmp13)){
 					HX_STACK_LINE(81)
-					::haxe::ds::IntMap tmp14 = this->keyboardActionsOnJustPressed;		HX_STACK_VAR(tmp14,"tmp14");
+					::haxe::ds::IntMap tmp14 = this->keyboardEventsOnJustPressed;		HX_STACK_VAR(tmp14,"tmp14");
 					HX_STACK_LINE(81)
 					int tmp15 = keyID;		HX_STACK_VAR(tmp15,"tmp15");
 					HX_STACK_LINE(81)
@@ -652,7 +658,7 @@ Void CustomController_obj::update( ){
 ;
 		}
 		HX_STACK_LINE(84)
-		::haxe::ds::IntMap tmp7 = this->keyboardActionsOnJustReleased;		HX_STACK_VAR(tmp7,"tmp7");
+		::haxe::ds::IntMap tmp7 = this->keyboardEventsOnJustReleased;		HX_STACK_VAR(tmp7,"tmp7");
 		HX_STACK_LINE(84)
 		Dynamic tmp8 = tmp7->keys();		HX_STACK_VAR(tmp8,"tmp8");
 		HX_STACK_LINE(84)
@@ -676,7 +682,7 @@ Void CustomController_obj::update( ){
 				HX_STACK_LINE(85)
 				if ((tmp15)){
 					HX_STACK_LINE(86)
-					::haxe::ds::IntMap tmp16 = this->keyboardActionsOnJustReleased;		HX_STACK_VAR(tmp16,"tmp16");
+					::haxe::ds::IntMap tmp16 = this->keyboardEventsOnJustReleased;		HX_STACK_VAR(tmp16,"tmp16");
 					HX_STACK_LINE(86)
 					int tmp17 = keyID;		HX_STACK_VAR(tmp17,"tmp17");
 					HX_STACK_LINE(86)
@@ -696,9 +702,9 @@ return null();
 
 HX_DEFINE_DYNAMIC_FUNC0(CustomController_obj,update,(void))
 
-Void CustomController_obj::initDefaultActions( ){
+Void CustomController_obj::initDefaultEvents( ){
 {
-		HX_STACK_FRAME("CustomController","initDefaultActions",0xe8d4586d,"CustomController.initDefaultActions","CustomController.hx",91,0x79fa7911)
+		HX_STACK_FRAME("CustomController","initDefaultEvents",0xb28c58a9,"CustomController.initDefaultEvents","CustomController.hx",91,0x79fa7911)
 		HX_STACK_THIS(this)
 		HX_STACK_LINE(91)
 		::CustomController _g = hx::ObjectPtr<OBJ_>(this);		HX_STACK_VAR(_g,"_g");
@@ -720,7 +726,7 @@ Void CustomController_obj::initDefaultActions( ){
 		HX_END_LOCAL_FUNC0(return)
 
 		HX_STACK_LINE(93)
-		this->insertKeyboardActionOnPressed((int)87, Dynamic(new _Function_1_1()));
+		this->addKeyboardEventOnPressed((int)87, Dynamic(new _Function_1_1()));
 
 		HX_BEGIN_LOCAL_FUNC_S0(hx::LocalFunc,_Function_1_2)
 		int __ArgCount() const { return 0; }
@@ -739,7 +745,7 @@ Void CustomController_obj::initDefaultActions( ){
 		HX_END_LOCAL_FUNC0(return)
 
 		HX_STACK_LINE(94)
-		this->insertKeyboardActionOnPressed((int)83, Dynamic(new _Function_1_2()));
+		this->addKeyboardEventOnPressed((int)83, Dynamic(new _Function_1_2()));
 
 		HX_BEGIN_LOCAL_FUNC_S0(hx::LocalFunc,_Function_1_3)
 		int __ArgCount() const { return 0; }
@@ -758,7 +764,7 @@ Void CustomController_obj::initDefaultActions( ){
 		HX_END_LOCAL_FUNC0(return)
 
 		HX_STACK_LINE(95)
-		this->insertKeyboardActionOnPressed((int)65, Dynamic(new _Function_1_3()));
+		this->addKeyboardEventOnPressed((int)65, Dynamic(new _Function_1_3()));
 
 		HX_BEGIN_LOCAL_FUNC_S0(hx::LocalFunc,_Function_1_4)
 		int __ArgCount() const { return 0; }
@@ -777,36 +783,21 @@ Void CustomController_obj::initDefaultActions( ){
 		HX_END_LOCAL_FUNC0(return)
 
 		HX_STACK_LINE(96)
-		this->insertKeyboardActionOnPressed((int)68, Dynamic(new _Function_1_4()));
+		this->addKeyboardEventOnPressed((int)68, Dynamic(new _Function_1_4()));
 
 		HX_BEGIN_LOCAL_FUNC_S0(hx::LocalFunc,_Function_1_5)
 		int __ArgCount() const { return 0; }
 		int run(){
-			HX_STACK_FRAME("*","_Function_1_5",0x5200ed3b,"*._Function_1_5","CustomController.hx",97,0x79fa7911)
-			{
-				HX_STACK_LINE(97)
-				::Player tmp = ::Shared_obj::player;		HX_STACK_VAR(tmp,"tmp");
-				HX_STACK_LINE(97)
-				tmp->move((int)0,(int)-1);
-				HX_STACK_LINE(97)
-				return (int)0;
-			}
-			return null();
-		}
-		HX_END_LOCAL_FUNC0(return)
-
-		HX_STACK_LINE(97)
-		this->insertKeyboardActionOnPressed((int)38, Dynamic(new _Function_1_5()));
-
-		HX_BEGIN_LOCAL_FUNC_S0(hx::LocalFunc,_Function_1_6)
-		int __ArgCount() const { return 0; }
-		int run(){
-			HX_STACK_FRAME("*","_Function_1_6",0x5200ed3c,"*._Function_1_6","CustomController.hx",98,0x79fa7911)
+			HX_STACK_FRAME("*","_Function_1_5",0x5200ed3b,"*._Function_1_5","CustomController.hx",98,0x79fa7911)
 			{
 				HX_STACK_LINE(98)
-				::Player tmp = ::Shared_obj::player;		HX_STACK_VAR(tmp,"tmp");
+				::Clock tmp = ::Shared_obj::clock;		HX_STACK_VAR(tmp,"tmp");
 				HX_STACK_LINE(98)
-				tmp->move((int)0,(int)1);
+				int tmp1 = tmp->getCurrentYear();		HX_STACK_VAR(tmp1,"tmp1");
+				HX_STACK_LINE(98)
+				Dynamic tmp2 = hx::SourceInfo(HX_HCSTRING("CustomController.hx","\x11","\x79","\xfa","\x79"),98,HX_HCSTRING("CustomController","\xcd","\xe7","\xd3","\xa3"),HX_HCSTRING("initDefaultEvents","\x8a","\x8d","\x44","\x77"));		HX_STACK_VAR(tmp2,"tmp2");
+				HX_STACK_LINE(98)
+				::haxe::Log_obj::trace(tmp1,tmp2);
 				HX_STACK_LINE(98)
 				return (int)0;
 			}
@@ -815,17 +806,21 @@ Void CustomController_obj::initDefaultActions( ){
 		HX_END_LOCAL_FUNC0(return)
 
 		HX_STACK_LINE(98)
-		this->insertKeyboardActionOnPressed((int)40, Dynamic(new _Function_1_6()));
+		this->addKeyboardEventOnJustPressed((int)49, Dynamic(new _Function_1_5()));
 
-		HX_BEGIN_LOCAL_FUNC_S0(hx::LocalFunc,_Function_1_7)
+		HX_BEGIN_LOCAL_FUNC_S0(hx::LocalFunc,_Function_1_6)
 		int __ArgCount() const { return 0; }
 		int run(){
-			HX_STACK_FRAME("*","_Function_1_7",0x5200ed3d,"*._Function_1_7","CustomController.hx",99,0x79fa7911)
+			HX_STACK_FRAME("*","_Function_1_6",0x5200ed3c,"*._Function_1_6","CustomController.hx",99,0x79fa7911)
 			{
 				HX_STACK_LINE(99)
-				::Player tmp = ::Shared_obj::player;		HX_STACK_VAR(tmp,"tmp");
+				::Clock tmp = ::Shared_obj::clock;		HX_STACK_VAR(tmp,"tmp");
 				HX_STACK_LINE(99)
-				tmp->move((int)-1,(int)0);
+				::String tmp1 = tmp->getCurrentSeason();		HX_STACK_VAR(tmp1,"tmp1");
+				HX_STACK_LINE(99)
+				Dynamic tmp2 = hx::SourceInfo(HX_HCSTRING("CustomController.hx","\x11","\x79","\xfa","\x79"),99,HX_HCSTRING("CustomController","\xcd","\xe7","\xd3","\xa3"),HX_HCSTRING("initDefaultEvents","\x8a","\x8d","\x44","\x77"));		HX_STACK_VAR(tmp2,"tmp2");
+				HX_STACK_LINE(99)
+				::haxe::Log_obj::trace(tmp1,tmp2);
 				HX_STACK_LINE(99)
 				return (int)0;
 			}
@@ -834,17 +829,21 @@ Void CustomController_obj::initDefaultActions( ){
 		HX_END_LOCAL_FUNC0(return)
 
 		HX_STACK_LINE(99)
-		this->insertKeyboardActionOnPressed((int)37, Dynamic(new _Function_1_7()));
+		this->addKeyboardEventOnJustPressed((int)50, Dynamic(new _Function_1_6()));
 
-		HX_BEGIN_LOCAL_FUNC_S0(hx::LocalFunc,_Function_1_8)
+		HX_BEGIN_LOCAL_FUNC_S0(hx::LocalFunc,_Function_1_7)
 		int __ArgCount() const { return 0; }
 		int run(){
-			HX_STACK_FRAME("*","_Function_1_8",0x5200ed3e,"*._Function_1_8","CustomController.hx",100,0x79fa7911)
+			HX_STACK_FRAME("*","_Function_1_7",0x5200ed3d,"*._Function_1_7","CustomController.hx",100,0x79fa7911)
 			{
 				HX_STACK_LINE(100)
-				::Player tmp = ::Shared_obj::player;		HX_STACK_VAR(tmp,"tmp");
+				::Clock tmp = ::Shared_obj::clock;		HX_STACK_VAR(tmp,"tmp");
 				HX_STACK_LINE(100)
-				tmp->move((int)1,(int)0);
+				int tmp1 = tmp->getCurrentDay();		HX_STACK_VAR(tmp1,"tmp1");
+				HX_STACK_LINE(100)
+				Dynamic tmp2 = hx::SourceInfo(HX_HCSTRING("CustomController.hx","\x11","\x79","\xfa","\x79"),100,HX_HCSTRING("CustomController","\xcd","\xe7","\xd3","\xa3"),HX_HCSTRING("initDefaultEvents","\x8a","\x8d","\x44","\x77"));		HX_STACK_VAR(tmp2,"tmp2");
+				HX_STACK_LINE(100)
+				::haxe::Log_obj::trace(tmp1,tmp2);
 				HX_STACK_LINE(100)
 				return (int)0;
 			}
@@ -853,15 +852,21 @@ Void CustomController_obj::initDefaultActions( ){
 		HX_END_LOCAL_FUNC0(return)
 
 		HX_STACK_LINE(100)
-		this->insertKeyboardActionOnPressed((int)39, Dynamic(new _Function_1_8()));
+		this->addKeyboardEventOnJustPressed((int)51, Dynamic(new _Function_1_7()));
 
-		HX_BEGIN_LOCAL_FUNC_S0(hx::LocalFunc,_Function_1_9)
+		HX_BEGIN_LOCAL_FUNC_S0(hx::LocalFunc,_Function_1_8)
 		int __ArgCount() const { return 0; }
 		int run(){
-			HX_STACK_FRAME("*","_Function_1_9",0x5200ed3f,"*._Function_1_9","CustomController.hx",101,0x79fa7911)
+			HX_STACK_FRAME("*","_Function_1_8",0x5200ed3e,"*._Function_1_8","CustomController.hx",101,0x79fa7911)
 			{
 				HX_STACK_LINE(101)
-				::Sys_obj::exit((int)0);
+				::Clock tmp = ::Shared_obj::clock;		HX_STACK_VAR(tmp,"tmp");
+				HX_STACK_LINE(101)
+				int tmp1 = tmp->getCurrentHour();		HX_STACK_VAR(tmp1,"tmp1");
+				HX_STACK_LINE(101)
+				Dynamic tmp2 = hx::SourceInfo(HX_HCSTRING("CustomController.hx","\x11","\x79","\xfa","\x79"),101,HX_HCSTRING("CustomController","\xcd","\xe7","\xd3","\xa3"),HX_HCSTRING("initDefaultEvents","\x8a","\x8d","\x44","\x77"));		HX_STACK_VAR(tmp2,"tmp2");
+				HX_STACK_LINE(101)
+				::haxe::Log_obj::trace(tmp1,tmp2);
 				HX_STACK_LINE(101)
 				return (int)0;
 			}
@@ -870,17 +875,21 @@ Void CustomController_obj::initDefaultActions( ){
 		HX_END_LOCAL_FUNC0(return)
 
 		HX_STACK_LINE(101)
-		this->insertKeyboardActionOnPressed((int)27, Dynamic(new _Function_1_9()));
+		this->addKeyboardEventOnJustPressed((int)52, Dynamic(new _Function_1_8()));
 
-		HX_BEGIN_LOCAL_FUNC_S0(hx::LocalFunc,_Function_1_10)
+		HX_BEGIN_LOCAL_FUNC_S0(hx::LocalFunc,_Function_1_9)
 		int __ArgCount() const { return 0; }
 		int run(){
-			HX_STACK_FRAME("*","_Function_1_10",0x6ecea319,"*._Function_1_10","CustomController.hx",102,0x79fa7911)
+			HX_STACK_FRAME("*","_Function_1_9",0x5200ed3f,"*._Function_1_9","CustomController.hx",102,0x79fa7911)
 			{
 				HX_STACK_LINE(102)
-				::Player tmp = ::Shared_obj::player;		HX_STACK_VAR(tmp,"tmp");
+				::Clock tmp = ::Shared_obj::clock;		HX_STACK_VAR(tmp,"tmp");
 				HX_STACK_LINE(102)
-				tmp->isRunning = true;
+				int tmp1 = tmp->getCurrentMinute();		HX_STACK_VAR(tmp1,"tmp1");
+				HX_STACK_LINE(102)
+				Dynamic tmp2 = hx::SourceInfo(HX_HCSTRING("CustomController.hx","\x11","\x79","\xfa","\x79"),102,HX_HCSTRING("CustomController","\xcd","\xe7","\xd3","\xa3"),HX_HCSTRING("initDefaultEvents","\x8a","\x8d","\x44","\x77"));		HX_STACK_VAR(tmp2,"tmp2");
+				HX_STACK_LINE(102)
+				::haxe::Log_obj::trace(tmp1,tmp2);
 				HX_STACK_LINE(102)
 				return (int)0;
 			}
@@ -889,49 +898,17 @@ Void CustomController_obj::initDefaultActions( ){
 		HX_END_LOCAL_FUNC0(return)
 
 		HX_STACK_LINE(102)
-		this->insertKeyboardActionOnPressed((int)16, Dynamic(new _Function_1_10()));
+		this->addKeyboardEventOnJustPressed((int)53, Dynamic(new _Function_1_9()));
 
-		HX_BEGIN_LOCAL_FUNC_S0(hx::LocalFunc,_Function_1_11)
+		HX_BEGIN_LOCAL_FUNC_S0(hx::LocalFunc,_Function_1_10)
 		int __ArgCount() const { return 0; }
 		int run(){
-			HX_STACK_FRAME("*","_Function_1_11",0x6ecea31a,"*._Function_1_11","CustomController.hx",103,0x79fa7911)
+			HX_STACK_FRAME("*","_Function_1_10",0x6ecea319,"*._Function_1_10","CustomController.hx",104,0x79fa7911)
 			{
-				HX_STACK_LINE(103)
+				HX_STACK_LINE(104)
 				::Player tmp = ::Shared_obj::player;		HX_STACK_VAR(tmp,"tmp");
-				HX_STACK_LINE(103)
-				tmp->isRunning = false;
-				HX_STACK_LINE(103)
-				return (int)0;
-			}
-			return null();
-		}
-		HX_END_LOCAL_FUNC0(return)
-
-		HX_STACK_LINE(103)
-		this->insertKeyboardActionOnJustReleased((int)16, Dynamic(new _Function_1_11()));
-
-		HX_BEGIN_LOCAL_FUNC_S0(hx::LocalFunc,_Function_1_12)
-		int __ArgCount() const { return 0; }
-		int run(){
-			HX_STACK_FRAME("*","_Function_1_12",0x6ecea31b,"*._Function_1_12","CustomController.hx",104,0x79fa7911)
-			{
 				HX_STACK_LINE(104)
-				::flixel::FlxCamera tmp = ::flixel::FlxG_obj::camera;		HX_STACK_VAR(tmp,"tmp");
-				HX_STACK_LINE(104)
-				Float tmp1 = tmp->zoom;		HX_STACK_VAR(tmp1,"tmp1");
-				HX_STACK_LINE(104)
-				bool tmp2 = (tmp1 < ((Float)3.0));		HX_STACK_VAR(tmp2,"tmp2");
-				HX_STACK_LINE(104)
-				if ((tmp2)){
-					HX_STACK_LINE(104)
-					::flixel::FlxCamera tmp3 = ::flixel::FlxG_obj::camera;		HX_STACK_VAR(tmp3,"tmp3");
-					HX_STACK_LINE(104)
-					::flixel::FlxCamera _g1 = tmp3;		HX_STACK_VAR(_g1,"_g1");
-					HX_STACK_LINE(104)
-					Float tmp4 = (_g1->zoom + ((Float)0.1));		HX_STACK_VAR(tmp4,"tmp4");
-					HX_STACK_LINE(104)
-					_g1->set_zoom(tmp4);
-				}
+				tmp->move((int)0,(int)-1);
 				HX_STACK_LINE(104)
 				return (int)0;
 			}
@@ -940,30 +917,17 @@ Void CustomController_obj::initDefaultActions( ){
 		HX_END_LOCAL_FUNC0(return)
 
 		HX_STACK_LINE(104)
-		this->insertKeyboardActionOnPressed((int)33, Dynamic(new _Function_1_12()));
+		this->addKeyboardEventOnPressed((int)38, Dynamic(new _Function_1_10()));
 
-		HX_BEGIN_LOCAL_FUNC_S0(hx::LocalFunc,_Function_1_13)
+		HX_BEGIN_LOCAL_FUNC_S0(hx::LocalFunc,_Function_1_11)
 		int __ArgCount() const { return 0; }
 		int run(){
-			HX_STACK_FRAME("*","_Function_1_13",0x6ecea31c,"*._Function_1_13","CustomController.hx",105,0x79fa7911)
+			HX_STACK_FRAME("*","_Function_1_11",0x6ecea31a,"*._Function_1_11","CustomController.hx",105,0x79fa7911)
 			{
 				HX_STACK_LINE(105)
-				::flixel::FlxCamera tmp = ::flixel::FlxG_obj::camera;		HX_STACK_VAR(tmp,"tmp");
+				::Player tmp = ::Shared_obj::player;		HX_STACK_VAR(tmp,"tmp");
 				HX_STACK_LINE(105)
-				Float tmp1 = tmp->zoom;		HX_STACK_VAR(tmp1,"tmp1");
-				HX_STACK_LINE(105)
-				bool tmp2 = (tmp1 > ((Float)1.0));		HX_STACK_VAR(tmp2,"tmp2");
-				HX_STACK_LINE(105)
-				if ((tmp2)){
-					HX_STACK_LINE(105)
-					::flixel::FlxCamera tmp3 = ::flixel::FlxG_obj::camera;		HX_STACK_VAR(tmp3,"tmp3");
-					HX_STACK_LINE(105)
-					::flixel::FlxCamera _g1 = tmp3;		HX_STACK_VAR(_g1,"_g1");
-					HX_STACK_LINE(105)
-					Float tmp4 = (_g1->zoom - ((Float)0.1));		HX_STACK_VAR(tmp4,"tmp4");
-					HX_STACK_LINE(105)
-					_g1->set_zoom(tmp4);
-				}
+				tmp->move((int)0,(int)1);
 				HX_STACK_LINE(105)
 				return (int)0;
 			}
@@ -972,48 +936,37 @@ Void CustomController_obj::initDefaultActions( ){
 		HX_END_LOCAL_FUNC0(return)
 
 		HX_STACK_LINE(105)
-		this->insertKeyboardActionOnPressed((int)34, Dynamic(new _Function_1_13()));
+		this->addKeyboardEventOnPressed((int)40, Dynamic(new _Function_1_11()));
 
-		HX_BEGIN_LOCAL_FUNC_S1(hx::LocalFunc,_Function_1_14,::CustomController,_g)
+		HX_BEGIN_LOCAL_FUNC_S0(hx::LocalFunc,_Function_1_12)
 		int __ArgCount() const { return 0; }
 		int run(){
-			HX_STACK_FRAME("*","_Function_1_14",0x6ecea31d,"*._Function_1_14","CustomController.hx",107,0x79fa7911)
+			HX_STACK_FRAME("*","_Function_1_12",0x6ecea31b,"*._Function_1_12","CustomController.hx",106,0x79fa7911)
 			{
-				HX_STACK_LINE(108)
+				HX_STACK_LINE(106)
 				::Player tmp = ::Shared_obj::player;		HX_STACK_VAR(tmp,"tmp");
-				HX_STACK_LINE(108)
-				Float tmp1;		HX_STACK_VAR(tmp1,"tmp1");
-				HX_STACK_LINE(108)
-				{
-					HX_STACK_LINE(108)
-					::flixel::input::gamepad::lists::FlxGamepadAnalogList tmp2 = _g->gamepad->analog;		HX_STACK_VAR(tmp2,"tmp2");
-					HX_STACK_LINE(108)
-					::flixel::input::gamepad::FlxGamepad tmp3 = tmp2->value->gamepad;		HX_STACK_VAR(tmp3,"tmp3");
-					HX_STACK_LINE(108)
-					::flixel::input::gamepad::FlxGamepad _this = tmp3;		HX_STACK_VAR(_this,"_this");
-					HX_STACK_LINE(108)
-					::flixel::input::gamepad::FlxGamepadAnalogStick tmp4 = _this->mapping->getAnalogStick((int)19);		HX_STACK_VAR(tmp4,"tmp4");
-					HX_STACK_LINE(108)
-					tmp1 = _this->getAnalogXAxisValue(tmp4);
-				}
-				HX_STACK_LINE(108)
-				Float tmp2;		HX_STACK_VAR(tmp2,"tmp2");
-				HX_STACK_LINE(108)
-				{
-					HX_STACK_LINE(108)
-					::flixel::input::gamepad::lists::FlxGamepadAnalogList tmp3 = _g->gamepad->analog;		HX_STACK_VAR(tmp3,"tmp3");
-					HX_STACK_LINE(108)
-					::flixel::input::gamepad::FlxGamepad tmp4 = tmp3->value->gamepad;		HX_STACK_VAR(tmp4,"tmp4");
-					HX_STACK_LINE(108)
-					::flixel::input::gamepad::FlxGamepad _this = tmp4;		HX_STACK_VAR(_this,"_this");
-					HX_STACK_LINE(108)
-					::flixel::input::gamepad::FlxGamepadAnalogStick tmp5 = _this->mapping->getAnalogStick((int)19);		HX_STACK_VAR(tmp5,"tmp5");
-					HX_STACK_LINE(108)
-					tmp2 = _this->getYAxisRaw(tmp5);
-				}
-				HX_STACK_LINE(108)
-				tmp->move(tmp1,tmp2);
-				HX_STACK_LINE(109)
+				HX_STACK_LINE(106)
+				tmp->move((int)-1,(int)0);
+				HX_STACK_LINE(106)
+				return (int)0;
+			}
+			return null();
+		}
+		HX_END_LOCAL_FUNC0(return)
+
+		HX_STACK_LINE(106)
+		this->addKeyboardEventOnPressed((int)37, Dynamic(new _Function_1_12()));
+
+		HX_BEGIN_LOCAL_FUNC_S0(hx::LocalFunc,_Function_1_13)
+		int __ArgCount() const { return 0; }
+		int run(){
+			HX_STACK_FRAME("*","_Function_1_13",0x6ecea31c,"*._Function_1_13","CustomController.hx",107,0x79fa7911)
+			{
+				HX_STACK_LINE(107)
+				::Player tmp = ::Shared_obj::player;		HX_STACK_VAR(tmp,"tmp");
+				HX_STACK_LINE(107)
+				tmp->move((int)1,(int)0);
+				HX_STACK_LINE(107)
 				return (int)0;
 			}
 			return null();
@@ -1021,18 +974,86 @@ Void CustomController_obj::initDefaultActions( ){
 		HX_END_LOCAL_FUNC0(return)
 
 		HX_STACK_LINE(107)
-		this->insertGamepadActionOnPressed((int)19, Dynamic(new _Function_1_14(_g)));
+		this->addKeyboardEventOnPressed((int)39, Dynamic(new _Function_1_13()));
+
+		HX_BEGIN_LOCAL_FUNC_S0(hx::LocalFunc,_Function_1_14)
+		int __ArgCount() const { return 0; }
+		int run(){
+			HX_STACK_FRAME("*","_Function_1_14",0x6ecea31d,"*._Function_1_14","CustomController.hx",108,0x79fa7911)
+			{
+				HX_STACK_LINE(108)
+				::Sys_obj::exit((int)0);
+				HX_STACK_LINE(108)
+				return (int)0;
+			}
+			return null();
+		}
+		HX_END_LOCAL_FUNC0(return)
+
+		HX_STACK_LINE(108)
+		this->addKeyboardEventOnPressed((int)27, Dynamic(new _Function_1_14()));
 
 		HX_BEGIN_LOCAL_FUNC_S0(hx::LocalFunc,_Function_1_15)
 		int __ArgCount() const { return 0; }
 		int run(){
-			HX_STACK_FRAME("*","_Function_1_15",0x6ecea31e,"*._Function_1_15","CustomController.hx",111,0x79fa7911)
+			HX_STACK_FRAME("*","_Function_1_15",0x6ecea31e,"*._Function_1_15","CustomController.hx",109,0x79fa7911)
 			{
-				HX_STACK_LINE(112)
-				Dynamic tmp = hx::SourceInfo(HX_HCSTRING("CustomController.hx","\x11","\x79","\xfa","\x79"),112,HX_HCSTRING("CustomController","\xcd","\xe7","\xd3","\xa3"),HX_HCSTRING("initDefaultActions","\x6c","\x68","\x4a","\x45"));		HX_STACK_VAR(tmp,"tmp");
-				HX_STACK_LINE(112)
-				::haxe::Log_obj::trace(HX_HCSTRING("Right analog stick","\x44","\x2e","\xe0","\x2d"),tmp);
-				HX_STACK_LINE(113)
+				HX_STACK_LINE(109)
+				::Player tmp = ::Shared_obj::player;		HX_STACK_VAR(tmp,"tmp");
+				HX_STACK_LINE(109)
+				tmp->isRunning = true;
+				HX_STACK_LINE(109)
+				return (int)0;
+			}
+			return null();
+		}
+		HX_END_LOCAL_FUNC0(return)
+
+		HX_STACK_LINE(109)
+		this->addKeyboardEventOnPressed((int)16, Dynamic(new _Function_1_15()));
+
+		HX_BEGIN_LOCAL_FUNC_S0(hx::LocalFunc,_Function_1_16)
+		int __ArgCount() const { return 0; }
+		int run(){
+			HX_STACK_FRAME("*","_Function_1_16",0x6ecea31f,"*._Function_1_16","CustomController.hx",110,0x79fa7911)
+			{
+				HX_STACK_LINE(110)
+				::Player tmp = ::Shared_obj::player;		HX_STACK_VAR(tmp,"tmp");
+				HX_STACK_LINE(110)
+				tmp->isRunning = false;
+				HX_STACK_LINE(110)
+				return (int)0;
+			}
+			return null();
+		}
+		HX_END_LOCAL_FUNC0(return)
+
+		HX_STACK_LINE(110)
+		this->addKeyboardEventOnJustReleased((int)16, Dynamic(new _Function_1_16()));
+
+		HX_BEGIN_LOCAL_FUNC_S0(hx::LocalFunc,_Function_1_17)
+		int __ArgCount() const { return 0; }
+		int run(){
+			HX_STACK_FRAME("*","_Function_1_17",0x6ecea320,"*._Function_1_17","CustomController.hx",111,0x79fa7911)
+			{
+				HX_STACK_LINE(111)
+				::flixel::FlxCamera tmp = ::flixel::FlxG_obj::camera;		HX_STACK_VAR(tmp,"tmp");
+				HX_STACK_LINE(111)
+				Float tmp1 = tmp->zoom;		HX_STACK_VAR(tmp1,"tmp1");
+				HX_STACK_LINE(111)
+				bool tmp2 = (tmp1 < ((Float)3.0));		HX_STACK_VAR(tmp2,"tmp2");
+				HX_STACK_LINE(111)
+				if ((tmp2)){
+					HX_STACK_LINE(111)
+					::flixel::FlxCamera tmp3 = ::flixel::FlxG_obj::camera;		HX_STACK_VAR(tmp3,"tmp3");
+					HX_STACK_LINE(111)
+					::flixel::FlxCamera _g1 = tmp3;		HX_STACK_VAR(_g1,"_g1");
+					HX_STACK_LINE(111)
+					Float tmp4 = (_g1->zoom + ((Float)0.1));		HX_STACK_VAR(tmp4,"tmp4");
+					HX_STACK_LINE(111)
+					_g1->set_zoom(tmp4);
+				}
+				HX_STACK_LINE(111)
 				return (int)0;
 			}
 			return null();
@@ -1040,49 +1061,149 @@ Void CustomController_obj::initDefaultActions( ){
 		HX_END_LOCAL_FUNC0(return)
 
 		HX_STACK_LINE(111)
-		this->insertGamepadActionOnPressed((int)20, Dynamic(new _Function_1_15()));
+		this->addKeyboardEventOnPressed((int)33, Dynamic(new _Function_1_17()));
 
-		HX_BEGIN_LOCAL_FUNC_S0(hx::LocalFunc,_Function_1_16)
+		HX_BEGIN_LOCAL_FUNC_S0(hx::LocalFunc,_Function_1_18)
 		int __ArgCount() const { return 0; }
 		int run(){
-			HX_STACK_FRAME("*","_Function_1_16",0x6ecea31f,"*._Function_1_16","CustomController.hx",116,0x79fa7911)
+			HX_STACK_FRAME("*","_Function_1_18",0x6ecea321,"*._Function_1_18","CustomController.hx",112,0x79fa7911)
 			{
+				HX_STACK_LINE(112)
+				::flixel::FlxCamera tmp = ::flixel::FlxG_obj::camera;		HX_STACK_VAR(tmp,"tmp");
+				HX_STACK_LINE(112)
+				Float tmp1 = tmp->zoom;		HX_STACK_VAR(tmp1,"tmp1");
+				HX_STACK_LINE(112)
+				bool tmp2 = (tmp1 > ((Float)1.0));		HX_STACK_VAR(tmp2,"tmp2");
+				HX_STACK_LINE(112)
+				if ((tmp2)){
+					HX_STACK_LINE(112)
+					::flixel::FlxCamera tmp3 = ::flixel::FlxG_obj::camera;		HX_STACK_VAR(tmp3,"tmp3");
+					HX_STACK_LINE(112)
+					::flixel::FlxCamera _g1 = tmp3;		HX_STACK_VAR(_g1,"_g1");
+					HX_STACK_LINE(112)
+					Float tmp4 = (_g1->zoom - ((Float)0.1));		HX_STACK_VAR(tmp4,"tmp4");
+					HX_STACK_LINE(112)
+					_g1->set_zoom(tmp4);
+				}
+				HX_STACK_LINE(112)
+				return (int)0;
+			}
+			return null();
+		}
+		HX_END_LOCAL_FUNC0(return)
+
+		HX_STACK_LINE(112)
+		this->addKeyboardEventOnPressed((int)34, Dynamic(new _Function_1_18()));
+
+		HX_BEGIN_LOCAL_FUNC_S1(hx::LocalFunc,_Function_1_19,::CustomController,_g)
+		int __ArgCount() const { return 0; }
+		int run(){
+			HX_STACK_FRAME("*","_Function_1_19",0x6ecea322,"*._Function_1_19","CustomController.hx",114,0x79fa7911)
+			{
+				HX_STACK_LINE(115)
+				::Player tmp = ::Shared_obj::player;		HX_STACK_VAR(tmp,"tmp");
+				HX_STACK_LINE(115)
+				Float tmp1;		HX_STACK_VAR(tmp1,"tmp1");
+				HX_STACK_LINE(115)
+				{
+					HX_STACK_LINE(115)
+					::flixel::input::gamepad::lists::FlxGamepadAnalogList tmp2 = _g->gamepad->analog;		HX_STACK_VAR(tmp2,"tmp2");
+					HX_STACK_LINE(115)
+					::flixel::input::gamepad::FlxGamepad tmp3 = tmp2->value->gamepad;		HX_STACK_VAR(tmp3,"tmp3");
+					HX_STACK_LINE(115)
+					::flixel::input::gamepad::FlxGamepad _this = tmp3;		HX_STACK_VAR(_this,"_this");
+					HX_STACK_LINE(115)
+					::flixel::input::gamepad::FlxGamepadAnalogStick tmp4 = _this->mapping->getAnalogStick((int)19);		HX_STACK_VAR(tmp4,"tmp4");
+					HX_STACK_LINE(115)
+					tmp1 = _this->getAnalogXAxisValue(tmp4);
+				}
+				HX_STACK_LINE(115)
+				Float tmp2;		HX_STACK_VAR(tmp2,"tmp2");
+				HX_STACK_LINE(115)
+				{
+					HX_STACK_LINE(115)
+					::flixel::input::gamepad::lists::FlxGamepadAnalogList tmp3 = _g->gamepad->analog;		HX_STACK_VAR(tmp3,"tmp3");
+					HX_STACK_LINE(115)
+					::flixel::input::gamepad::FlxGamepad tmp4 = tmp3->value->gamepad;		HX_STACK_VAR(tmp4,"tmp4");
+					HX_STACK_LINE(115)
+					::flixel::input::gamepad::FlxGamepad _this = tmp4;		HX_STACK_VAR(_this,"_this");
+					HX_STACK_LINE(115)
+					::flixel::input::gamepad::FlxGamepadAnalogStick tmp5 = _this->mapping->getAnalogStick((int)19);		HX_STACK_VAR(tmp5,"tmp5");
+					HX_STACK_LINE(115)
+					tmp2 = _this->getYAxisRaw(tmp5);
+				}
+				HX_STACK_LINE(115)
+				tmp->move(tmp1,tmp2);
 				HX_STACK_LINE(116)
+				return (int)0;
+			}
+			return null();
+		}
+		HX_END_LOCAL_FUNC0(return)
+
+		HX_STACK_LINE(114)
+		this->addGamepadEventOnPressed((int)19, Dynamic(new _Function_1_19(_g)));
+
+		HX_BEGIN_LOCAL_FUNC_S0(hx::LocalFunc,_Function_1_20)
+		int __ArgCount() const { return 0; }
+		int run(){
+			HX_STACK_FRAME("*","_Function_1_20",0x6ecea3f8,"*._Function_1_20","CustomController.hx",118,0x79fa7911)
+			{
+				HX_STACK_LINE(119)
+				Dynamic tmp = hx::SourceInfo(HX_HCSTRING("CustomController.hx","\x11","\x79","\xfa","\x79"),119,HX_HCSTRING("CustomController","\xcd","\xe7","\xd3","\xa3"),HX_HCSTRING("initDefaultEvents","\x8a","\x8d","\x44","\x77"));		HX_STACK_VAR(tmp,"tmp");
+				HX_STACK_LINE(119)
+				::haxe::Log_obj::trace(HX_HCSTRING("Right analog stick","\x44","\x2e","\xe0","\x2d"),tmp);
+				HX_STACK_LINE(120)
+				return (int)0;
+			}
+			return null();
+		}
+		HX_END_LOCAL_FUNC0(return)
+
+		HX_STACK_LINE(118)
+		this->addGamepadEventOnPressed((int)20, Dynamic(new _Function_1_20()));
+
+		HX_BEGIN_LOCAL_FUNC_S0(hx::LocalFunc,_Function_1_21)
+		int __ArgCount() const { return 0; }
+		int run(){
+			HX_STACK_FRAME("*","_Function_1_21",0x6ecea3f9,"*._Function_1_21","CustomController.hx",123,0x79fa7911)
+			{
+				HX_STACK_LINE(123)
 				::Sys_obj::exit((int)0);
-				HX_STACK_LINE(116)
+				HX_STACK_LINE(123)
 				return (int)0;
 			}
 			return null();
 		}
 		HX_END_LOCAL_FUNC0(return)
 
-		HX_STACK_LINE(116)
-		this->insertGamepadActionOnPressed((int)7, Dynamic(new _Function_1_16()));
+		HX_STACK_LINE(123)
+		this->addGamepadEventOnPressed((int)7, Dynamic(new _Function_1_21()));
 
-		HX_BEGIN_LOCAL_FUNC_S0(hx::LocalFunc,_Function_1_17)
+		HX_BEGIN_LOCAL_FUNC_S0(hx::LocalFunc,_Function_1_22)
 		int __ArgCount() const { return 0; }
 		int run(){
-			HX_STACK_FRAME("*","_Function_1_17",0x6ecea320,"*._Function_1_17","CustomController.hx",117,0x79fa7911)
+			HX_STACK_FRAME("*","_Function_1_22",0x6ecea3fa,"*._Function_1_22","CustomController.hx",124,0x79fa7911)
 			{
-				HX_STACK_LINE(117)
-				Dynamic tmp = hx::SourceInfo(HX_HCSTRING("CustomController.hx","\x11","\x79","\xfa","\x79"),117,HX_HCSTRING("CustomController","\xcd","\xe7","\xd3","\xa3"),HX_HCSTRING("initDefaultActions","\x6c","\x68","\x4a","\x45"));		HX_STACK_VAR(tmp,"tmp");
-				HX_STACK_LINE(117)
+				HX_STACK_LINE(124)
+				Dynamic tmp = hx::SourceInfo(HX_HCSTRING("CustomController.hx","\x11","\x79","\xfa","\x79"),124,HX_HCSTRING("CustomController","\xcd","\xe7","\xd3","\xa3"),HX_HCSTRING("initDefaultEvents","\x8a","\x8d","\x44","\x77"));		HX_STACK_VAR(tmp,"tmp");
+				HX_STACK_LINE(124)
 				::haxe::Log_obj::trace(HX_HCSTRING("Hello!!","\x52","\xe0","\x12","\x8b"),tmp);
-				HX_STACK_LINE(117)
+				HX_STACK_LINE(124)
 				return (int)0;
 			}
 			return null();
 		}
 		HX_END_LOCAL_FUNC0(return)
 
-		HX_STACK_LINE(117)
-		this->insertGamepadActionOnJustPressed((int)11, Dynamic(new _Function_1_17()));
+		HX_STACK_LINE(124)
+		this->addGamepadEventOnJustPressed((int)11, Dynamic(new _Function_1_22()));
 	}
 return null();
 }
 
 
-HX_DEFINE_DYNAMIC_FUNC0(CustomController_obj,initDefaultActions,(void))
+HX_DEFINE_DYNAMIC_FUNC0(CustomController_obj,initDefaultEvents,(void))
 
 
 CustomController_obj::CustomController_obj()
@@ -1092,24 +1213,24 @@ CustomController_obj::CustomController_obj()
 void CustomController_obj::__Mark(HX_MARK_PARAMS)
 {
 	HX_MARK_BEGIN_CLASS(CustomController);
-	HX_MARK_MEMBER_NAME(keyboardActionsOnPressed,"keyboardActionsOnPressed");
-	HX_MARK_MEMBER_NAME(keyboardActionsOnJustPressed,"keyboardActionsOnJustPressed");
-	HX_MARK_MEMBER_NAME(keyboardActionsOnJustReleased,"keyboardActionsOnJustReleased");
-	HX_MARK_MEMBER_NAME(gamepadActionsOnPressed,"gamepadActionsOnPressed");
-	HX_MARK_MEMBER_NAME(gamepadActionsOnJustPressed,"gamepadActionsOnJustPressed");
-	HX_MARK_MEMBER_NAME(gamepadActionsOnJustReleased,"gamepadActionsOnJustReleased");
+	HX_MARK_MEMBER_NAME(keyboardEventsOnPressed,"keyboardEventsOnPressed");
+	HX_MARK_MEMBER_NAME(keyboardEventsOnJustPressed,"keyboardEventsOnJustPressed");
+	HX_MARK_MEMBER_NAME(keyboardEventsOnJustReleased,"keyboardEventsOnJustReleased");
+	HX_MARK_MEMBER_NAME(gamepadEventsOnPressed,"gamepadEventsOnPressed");
+	HX_MARK_MEMBER_NAME(gamepadEventsOnJustPressed,"gamepadEventsOnJustPressed");
+	HX_MARK_MEMBER_NAME(gamepadEventsOnJustReleased,"gamepadEventsOnJustReleased");
 	HX_MARK_MEMBER_NAME(gamepad,"gamepad");
 	HX_MARK_END_CLASS();
 }
 
 void CustomController_obj::__Visit(HX_VISIT_PARAMS)
 {
-	HX_VISIT_MEMBER_NAME(keyboardActionsOnPressed,"keyboardActionsOnPressed");
-	HX_VISIT_MEMBER_NAME(keyboardActionsOnJustPressed,"keyboardActionsOnJustPressed");
-	HX_VISIT_MEMBER_NAME(keyboardActionsOnJustReleased,"keyboardActionsOnJustReleased");
-	HX_VISIT_MEMBER_NAME(gamepadActionsOnPressed,"gamepadActionsOnPressed");
-	HX_VISIT_MEMBER_NAME(gamepadActionsOnJustPressed,"gamepadActionsOnJustPressed");
-	HX_VISIT_MEMBER_NAME(gamepadActionsOnJustReleased,"gamepadActionsOnJustReleased");
+	HX_VISIT_MEMBER_NAME(keyboardEventsOnPressed,"keyboardEventsOnPressed");
+	HX_VISIT_MEMBER_NAME(keyboardEventsOnJustPressed,"keyboardEventsOnJustPressed");
+	HX_VISIT_MEMBER_NAME(keyboardEventsOnJustReleased,"keyboardEventsOnJustReleased");
+	HX_VISIT_MEMBER_NAME(gamepadEventsOnPressed,"gamepadEventsOnPressed");
+	HX_VISIT_MEMBER_NAME(gamepadEventsOnJustPressed,"gamepadEventsOnJustPressed");
+	HX_VISIT_MEMBER_NAME(gamepadEventsOnJustReleased,"gamepadEventsOnJustReleased");
 	HX_VISIT_MEMBER_NAME(gamepad,"gamepad");
 }
 
@@ -1122,36 +1243,38 @@ Dynamic CustomController_obj::__Field(const ::String &inName,hx::PropertyAccess 
 	case 7:
 		if (HX_FIELD_EQ(inName,"gamepad") ) { return gamepad; }
 		break;
-	case 18:
-		if (HX_FIELD_EQ(inName,"initDefaultActions") ) { return initDefaultActions_dyn(); }
+	case 17:
+		if (HX_FIELD_EQ(inName,"initDefaultEvents") ) { return initDefaultEvents_dyn(); }
+		break;
+	case 22:
+		if (HX_FIELD_EQ(inName,"gamepadEventsOnPressed") ) { return gamepadEventsOnPressed; }
 		break;
 	case 23:
-		if (HX_FIELD_EQ(inName,"gamepadActionsOnPressed") ) { return gamepadActionsOnPressed; }
+		if (HX_FIELD_EQ(inName,"keyboardEventsOnPressed") ) { return keyboardEventsOnPressed; }
 		break;
 	case 24:
-		if (HX_FIELD_EQ(inName,"keyboardActionsOnPressed") ) { return keyboardActionsOnPressed; }
+		if (HX_FIELD_EQ(inName,"addGamepadEventOnPressed") ) { return addGamepadEventOnPressed_dyn(); }
+		break;
+	case 25:
+		if (HX_FIELD_EQ(inName,"addKeyboardEventOnPressed") ) { return addKeyboardEventOnPressed_dyn(); }
+		break;
+	case 26:
+		if (HX_FIELD_EQ(inName,"gamepadEventsOnJustPressed") ) { return gamepadEventsOnJustPressed; }
 		break;
 	case 27:
-		if (HX_FIELD_EQ(inName,"gamepadActionsOnJustPressed") ) { return gamepadActionsOnJustPressed; }
+		if (HX_FIELD_EQ(inName,"keyboardEventsOnJustPressed") ) { return keyboardEventsOnJustPressed; }
+		if (HX_FIELD_EQ(inName,"gamepadEventsOnJustReleased") ) { return gamepadEventsOnJustReleased; }
 		break;
 	case 28:
-		if (HX_FIELD_EQ(inName,"keyboardActionsOnJustPressed") ) { return keyboardActionsOnJustPressed; }
-		if (HX_FIELD_EQ(inName,"gamepadActionsOnJustReleased") ) { return gamepadActionsOnJustReleased; }
-		if (HX_FIELD_EQ(inName,"insertGamepadActionOnPressed") ) { return insertGamepadActionOnPressed_dyn(); }
+		if (HX_FIELD_EQ(inName,"keyboardEventsOnJustReleased") ) { return keyboardEventsOnJustReleased; }
+		if (HX_FIELD_EQ(inName,"addGamepadEventOnJustPressed") ) { return addGamepadEventOnJustPressed_dyn(); }
 		break;
 	case 29:
-		if (HX_FIELD_EQ(inName,"keyboardActionsOnJustReleased") ) { return keyboardActionsOnJustReleased; }
-		if (HX_FIELD_EQ(inName,"insertKeyboardActionOnPressed") ) { return insertKeyboardActionOnPressed_dyn(); }
+		if (HX_FIELD_EQ(inName,"addKeyboardEventOnJustPressed") ) { return addKeyboardEventOnJustPressed_dyn(); }
+		if (HX_FIELD_EQ(inName,"addGamepadEventOnJustReleased") ) { return addGamepadEventOnJustReleased_dyn(); }
 		break;
-	case 32:
-		if (HX_FIELD_EQ(inName,"insertGamepadActionOnJustPressed") ) { return insertGamepadActionOnJustPressed_dyn(); }
-		break;
-	case 33:
-		if (HX_FIELD_EQ(inName,"insertKeyboardActionOnJustPressed") ) { return insertKeyboardActionOnJustPressed_dyn(); }
-		if (HX_FIELD_EQ(inName,"insertGamepadActionOnJustReleased") ) { return insertGamepadActionOnJustReleased_dyn(); }
-		break;
-	case 34:
-		if (HX_FIELD_EQ(inName,"insertKeyboardActionOnJustReleased") ) { return insertKeyboardActionOnJustReleased_dyn(); }
+	case 30:
+		if (HX_FIELD_EQ(inName,"addKeyboardEventOnJustReleased") ) { return addKeyboardEventOnJustReleased_dyn(); }
 	}
 	return super::__Field(inName,inCallProp);
 }
@@ -1162,45 +1285,45 @@ Dynamic CustomController_obj::__SetField(const ::String &inName,const Dynamic &i
 	case 7:
 		if (HX_FIELD_EQ(inName,"gamepad") ) { gamepad=inValue.Cast< ::flixel::input::gamepad::FlxGamepad >(); return inValue; }
 		break;
-	case 23:
-		if (HX_FIELD_EQ(inName,"gamepadActionsOnPressed") ) { gamepadActionsOnPressed=inValue.Cast< ::haxe::ds::IntMap >(); return inValue; }
+	case 22:
+		if (HX_FIELD_EQ(inName,"gamepadEventsOnPressed") ) { gamepadEventsOnPressed=inValue.Cast< ::haxe::ds::IntMap >(); return inValue; }
 		break;
-	case 24:
-		if (HX_FIELD_EQ(inName,"keyboardActionsOnPressed") ) { keyboardActionsOnPressed=inValue.Cast< ::haxe::ds::IntMap >(); return inValue; }
+	case 23:
+		if (HX_FIELD_EQ(inName,"keyboardEventsOnPressed") ) { keyboardEventsOnPressed=inValue.Cast< ::haxe::ds::IntMap >(); return inValue; }
+		break;
+	case 26:
+		if (HX_FIELD_EQ(inName,"gamepadEventsOnJustPressed") ) { gamepadEventsOnJustPressed=inValue.Cast< ::haxe::ds::IntMap >(); return inValue; }
 		break;
 	case 27:
-		if (HX_FIELD_EQ(inName,"gamepadActionsOnJustPressed") ) { gamepadActionsOnJustPressed=inValue.Cast< ::haxe::ds::IntMap >(); return inValue; }
+		if (HX_FIELD_EQ(inName,"keyboardEventsOnJustPressed") ) { keyboardEventsOnJustPressed=inValue.Cast< ::haxe::ds::IntMap >(); return inValue; }
+		if (HX_FIELD_EQ(inName,"gamepadEventsOnJustReleased") ) { gamepadEventsOnJustReleased=inValue.Cast< ::haxe::ds::IntMap >(); return inValue; }
 		break;
 	case 28:
-		if (HX_FIELD_EQ(inName,"keyboardActionsOnJustPressed") ) { keyboardActionsOnJustPressed=inValue.Cast< ::haxe::ds::IntMap >(); return inValue; }
-		if (HX_FIELD_EQ(inName,"gamepadActionsOnJustReleased") ) { gamepadActionsOnJustReleased=inValue.Cast< ::haxe::ds::IntMap >(); return inValue; }
-		break;
-	case 29:
-		if (HX_FIELD_EQ(inName,"keyboardActionsOnJustReleased") ) { keyboardActionsOnJustReleased=inValue.Cast< ::haxe::ds::IntMap >(); return inValue; }
+		if (HX_FIELD_EQ(inName,"keyboardEventsOnJustReleased") ) { keyboardEventsOnJustReleased=inValue.Cast< ::haxe::ds::IntMap >(); return inValue; }
 	}
 	return super::__SetField(inName,inValue,inCallProp);
 }
 
 void CustomController_obj::__GetFields(Array< ::String> &outFields)
 {
-	outFields->push(HX_HCSTRING("keyboardActionsOnPressed","\x4d","\x16","\xe1","\x7e"));
-	outFields->push(HX_HCSTRING("keyboardActionsOnJustPressed","\x01","\x03","\x04","\x8b"));
-	outFields->push(HX_HCSTRING("keyboardActionsOnJustReleased","\x7e","\xab","\x54","\x1f"));
-	outFields->push(HX_HCSTRING("gamepadActionsOnPressed","\x47","\x4e","\x0e","\x50"));
-	outFields->push(HX_HCSTRING("gamepadActionsOnJustPressed","\xfb","\xbf","\xc5","\xf2"));
-	outFields->push(HX_HCSTRING("gamepadActionsOnJustReleased","\x44","\x49","\x18","\x81"));
+	outFields->push(HX_HCSTRING("keyboardEventsOnPressed","\x03","\x90","\x1e","\x9f"));
+	outFields->push(HX_HCSTRING("keyboardEventsOnJustPressed","\xb7","\x8f","\xdf","\x54"));
+	outFields->push(HX_HCSTRING("keyboardEventsOnJustReleased","\x08","\x3e","\x94","\xf5"));
+	outFields->push(HX_HCSTRING("gamepadEventsOnPressed","\x49","\xf5","\xe9","\x7f"));
+	outFields->push(HX_HCSTRING("gamepadEventsOnJustPressed","\xfd","\x0f","\xce","\xbd"));
+	outFields->push(HX_HCSTRING("gamepadEventsOnJustReleased","\x02","\xfb","\x55","\x5d"));
 	outFields->push(HX_HCSTRING("gamepad","\xa1","\xe0","\x85","\x89"));
 	super::__GetFields(outFields);
 };
 
 #if HXCPP_SCRIPTABLE
 static hx::StorageInfo sMemberStorageInfo[] = {
-	{hx::fsObject /*::haxe::ds::IntMap*/ ,(int)offsetof(CustomController_obj,keyboardActionsOnPressed),HX_HCSTRING("keyboardActionsOnPressed","\x4d","\x16","\xe1","\x7e")},
-	{hx::fsObject /*::haxe::ds::IntMap*/ ,(int)offsetof(CustomController_obj,keyboardActionsOnJustPressed),HX_HCSTRING("keyboardActionsOnJustPressed","\x01","\x03","\x04","\x8b")},
-	{hx::fsObject /*::haxe::ds::IntMap*/ ,(int)offsetof(CustomController_obj,keyboardActionsOnJustReleased),HX_HCSTRING("keyboardActionsOnJustReleased","\x7e","\xab","\x54","\x1f")},
-	{hx::fsObject /*::haxe::ds::IntMap*/ ,(int)offsetof(CustomController_obj,gamepadActionsOnPressed),HX_HCSTRING("gamepadActionsOnPressed","\x47","\x4e","\x0e","\x50")},
-	{hx::fsObject /*::haxe::ds::IntMap*/ ,(int)offsetof(CustomController_obj,gamepadActionsOnJustPressed),HX_HCSTRING("gamepadActionsOnJustPressed","\xfb","\xbf","\xc5","\xf2")},
-	{hx::fsObject /*::haxe::ds::IntMap*/ ,(int)offsetof(CustomController_obj,gamepadActionsOnJustReleased),HX_HCSTRING("gamepadActionsOnJustReleased","\x44","\x49","\x18","\x81")},
+	{hx::fsObject /*::haxe::ds::IntMap*/ ,(int)offsetof(CustomController_obj,keyboardEventsOnPressed),HX_HCSTRING("keyboardEventsOnPressed","\x03","\x90","\x1e","\x9f")},
+	{hx::fsObject /*::haxe::ds::IntMap*/ ,(int)offsetof(CustomController_obj,keyboardEventsOnJustPressed),HX_HCSTRING("keyboardEventsOnJustPressed","\xb7","\x8f","\xdf","\x54")},
+	{hx::fsObject /*::haxe::ds::IntMap*/ ,(int)offsetof(CustomController_obj,keyboardEventsOnJustReleased),HX_HCSTRING("keyboardEventsOnJustReleased","\x08","\x3e","\x94","\xf5")},
+	{hx::fsObject /*::haxe::ds::IntMap*/ ,(int)offsetof(CustomController_obj,gamepadEventsOnPressed),HX_HCSTRING("gamepadEventsOnPressed","\x49","\xf5","\xe9","\x7f")},
+	{hx::fsObject /*::haxe::ds::IntMap*/ ,(int)offsetof(CustomController_obj,gamepadEventsOnJustPressed),HX_HCSTRING("gamepadEventsOnJustPressed","\xfd","\x0f","\xce","\xbd")},
+	{hx::fsObject /*::haxe::ds::IntMap*/ ,(int)offsetof(CustomController_obj,gamepadEventsOnJustReleased),HX_HCSTRING("gamepadEventsOnJustReleased","\x02","\xfb","\x55","\x5d")},
 	{hx::fsObject /*::flixel::input::gamepad::FlxGamepad*/ ,(int)offsetof(CustomController_obj,gamepad),HX_HCSTRING("gamepad","\xa1","\xe0","\x85","\x89")},
 	{ hx::fsUnknown, 0, null()}
 };
@@ -1208,21 +1331,21 @@ static hx::StaticInfo *sStaticStorageInfo = 0;
 #endif
 
 static ::String sMemberFields[] = {
-	HX_HCSTRING("keyboardActionsOnPressed","\x4d","\x16","\xe1","\x7e"),
-	HX_HCSTRING("keyboardActionsOnJustPressed","\x01","\x03","\x04","\x8b"),
-	HX_HCSTRING("keyboardActionsOnJustReleased","\x7e","\xab","\x54","\x1f"),
-	HX_HCSTRING("gamepadActionsOnPressed","\x47","\x4e","\x0e","\x50"),
-	HX_HCSTRING("gamepadActionsOnJustPressed","\xfb","\xbf","\xc5","\xf2"),
-	HX_HCSTRING("gamepadActionsOnJustReleased","\x44","\x49","\x18","\x81"),
+	HX_HCSTRING("keyboardEventsOnPressed","\x03","\x90","\x1e","\x9f"),
+	HX_HCSTRING("keyboardEventsOnJustPressed","\xb7","\x8f","\xdf","\x54"),
+	HX_HCSTRING("keyboardEventsOnJustReleased","\x08","\x3e","\x94","\xf5"),
+	HX_HCSTRING("gamepadEventsOnPressed","\x49","\xf5","\xe9","\x7f"),
+	HX_HCSTRING("gamepadEventsOnJustPressed","\xfd","\x0f","\xce","\xbd"),
+	HX_HCSTRING("gamepadEventsOnJustReleased","\x02","\xfb","\x55","\x5d"),
 	HX_HCSTRING("gamepad","\xa1","\xe0","\x85","\x89"),
-	HX_HCSTRING("insertKeyboardActionOnPressed","\x8d","\x93","\xb0","\x1f"),
-	HX_HCSTRING("insertKeyboardActionOnJustPressed","\x41","\x20","\x7b","\x2f"),
-	HX_HCSTRING("insertKeyboardActionOnJustReleased","\x3e","\x26","\x17","\x63"),
-	HX_HCSTRING("insertGamepadActionOnPressed","\x25","\xf7","\x88","\x38"),
-	HX_HCSTRING("insertGamepadActionOnJustPressed","\xd9","\x2f","\xa9","\xc4"),
-	HX_HCSTRING("insertGamepadActionOnJustReleased","\xa6","\xbb","\x36","\x56"),
+	HX_HCSTRING("addKeyboardEventOnPressed","\xd1","\x5d","\x9e","\xf9"),
+	HX_HCSTRING("addKeyboardEventOnJustPressed","\x85","\x5c","\x55","\x1c"),
+	HX_HCSTRING("addKeyboardEventOnJustReleased","\x7a","\xa5","\x31","\xb5"),
+	HX_HCSTRING("addGamepadEventOnPressed","\x69","\x50","\x09","\xbb"),
+	HX_HCSTRING("addGamepadEventOnJustPressed","\x1d","\x7b","\x09","\x58"),
+	HX_HCSTRING("addGamepadEventOnJustReleased","\xe2","\x4b","\x18","\xb7"),
 	HX_HCSTRING("update","\x09","\x86","\x05","\x87"),
-	HX_HCSTRING("initDefaultActions","\x6c","\x68","\x4a","\x45"),
+	HX_HCSTRING("initDefaultEvents","\x8a","\x8d","\x44","\x77"),
 	::String(null()) };
 
 static void sMarkStatics(HX_MARK_PARAMS) {
