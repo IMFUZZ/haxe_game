@@ -1,4 +1,0 @@
-HXCPP_M64=1
-hxcpp=3.4.2
-hxcpp_api_level=331
-hxcpp=/home/fuzz/haxelib/hxcpp/3,4,2/
