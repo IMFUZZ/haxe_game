@@ -1,74 +1,90 @@
 package states;
 
-import flixel.addons.nape.FlxNapeSpace;
-import flixel.addons.nape.FlxNapeTilemap;
 import flixel.FlxG;
-import flixel.FlxState;
-import flixel.math.FlxPoint;
-import flixel.text.FlxText;
-import flixel.tile.FlxTilemap;
-import flixel.util.FlxColor;
-import nape.geom.Vec2;
-import nape.geom.Vec2List;
-import nape.phys.Body;
-import openfl.display.BlendMode;
-import openfl.display.FPS;
-import flixel.FlxCamera;
-import flixel.math.FlxRect;
-using flixel.util.FlxSpriteUtil;
-import flixel.util.FlxTimer;
-import flixel.FlxSprite;
+import characters.Character;
+import world.Darkness;
+import flixel.input.FlxInput.FlxInputState;
+import flixel.group.FlxGroup;
 
-class PlayState extends FlxState {
+class PlayState extends flixel.FlxState {
 
-	private var _tileSelected:FlxSprite;
-	private var _shadowLayer:FlxSprite;
-	public var testLight:FlxSprite;
-	private var _tilemap:FlxNapeTilemap;
-	private var _mapGenerator:MapGenerator;
-	private var _worldMap:Array<Array<Int>>;
+	public var darkness:Darkness;
+	
+	private var _stateIC:InputController;
+	private var _sprites:FlxTypedGroup<flixel.FlxObject>;
+	private var _worldTileMap:world.WorldTilemap;
 
 	override public function create():Void {
 		super.create();
-		_init();
-		_mapGenerator = new MapGenerator(10, 1.4);
-		_worldMap = _mapGenerator.generate();
-		_tilemap = new FlxNapeTilemap();
-		_tilemap.loadMapFrom2DArray(_worldMap, "assets/images/tilemap.png", 16, 16);
-		add(_tilemap);
+		FlxG.camera.zoom = 1;
+		FlxG.camera.pixelPerfectRender = true;
+		Shared.player.initUI();
 
-		_tileSelected = new FlxSprite(0, 0);
-		_tileSelected.makeGraphic(Shared.TILE_WIDTH, Shared.TILE_HEIGHT, FlxColor.TRANSPARENT);
-		FlxSpriteUtil.drawRect(_tileSelected, 0, 0, Shared.TILE_WIDTH - 1, Shared.TILE_HEIGHT - 1, FlxColor.TRANSPARENT, { thickness: 1, color: FlxColor.RED });
-		add(_tileSelected);
+		// Initializes all the controls available in the playState
+		this._initControls();
 
-		add(Shared.player.sprite);
-		add(Shared.darkness);
+		// Starting the game time
+		Shared.clock.startTime();
+		Shared.clock.time = 40;
 
-		FlxG.camera.follow(Shared.player.sprite, 1);
+		// Initializes the physics engine space
+		flixel.addons.nape.FlxNapeSpace.init();
+
+		// Initializes the group of sprites to be printed (Necessary for sorting)	
+		this._sprites = new FlxTypedGroup<flixel.FlxObject>();
+
+		// Initializes the darkness layer for the day/night cycle
+		this.darkness = new Darkness(0, 0);
+
+		// Initializes the world tilemap
+		this._worldTileMap = Shared.mapGenerator.generate(10, "assets/images/tilemap.png");
+
+		// *TEMP* setting the player of the player
+		Shared.player.setCharacter(new Character(Shared.mapGenerator.spawnPoint.x, Shared.mapGenerator.spawnPoint.y, "assets/images/character.png"));
+		this._sprites.add(Shared.player.character);
+		this._sprites.add(Shared.player.character.tileSelected);
+		
+		// *TEMP* adding a test character in the world
+		this._sprites.add(new Character(100, 100, "assets/images/character.png"));
+		
+		// Organizing the layers
+		this.add(this._worldTileMap);
+		this.add(this._sprites);
+		this.add(this.darkness);
+		this.add(Shared.player.UI);
 	}
 
 	override public function update(elapsed:Float):Void {
 		super.update(elapsed);
 
+		// These should probably not be updated if paused
 		Shared.clock.update(elapsed);
-		Shared.player.beforeUpdate();
-		Shared.controller.update();
-
-		_tileSelected.x = Math.floor(FlxG.mouse.x / Shared.TILE_WIDTH) * Shared.TILE_WIDTH;
-		_tileSelected.y = Math.floor(FlxG.mouse.y / Shared.TILE_HEIGHT) * Shared.TILE_HEIGHT;
-
 		Shared.player.update(elapsed);
-		Shared.player.afterUpdate();
-		Shared.darkness.update(elapsed);
+		this.darkness.update(elapsed);
+		
+		this._stateIC.updateControls(FlxG.keys, FlxG.mouse, FlxG.gamepads.firstActive);
+		
+		// Sort the sprites to draw last so it is executed right before the super.update()
+		this._sprites.sort(flixel.util.FlxSort.byY);
 	}
 
-	private function _init() {
-		FlxNapeSpace.init();
-		FlxNapeSpace.drawDebug = true;
-		Shared.init();
-		FlxG.camera.zoom = 1.5;
-		FlxG.camera.antialiasing = false;
-	}
-
+	private function _initControls() {
+		this._stateIC = new InputController([FlxInputState.PRESSED, FlxInputState.JUST_PRESSED, FlxInputState.JUST_RELEASED]);
+		this._stateIC.addKeyboardEvent(FlxInputState.JUST_PRESSED, "PAGEUP", function(params:Dynamic) {
+			Shared.player.openSubState("worldMap");
+			return 0;
+		});
+		this._stateIC.addMouseEvent(FlxInputState.JUST_PRESSED, "RIGHTCLICK", function(params:Dynamic) {
+			this._sprites.add(new items.Gold(FlxG.mouse.x, FlxG.mouse.y));
+			return 0;
+		});
+		this._stateIC.addKeyboardEvent(FlxInputState.JUST_PRESSED, "ONE", function(params:Dynamic) {
+			FlxG.fullscreen = !FlxG.fullscreen;
+			return 0;
+		});
+		this._stateIC.addKeyboardEvent(FlxInputState.JUST_PRESSED, "TWO", function(params:Dynamic) {
+			this._worldTileMap.pixelPerfectRender = !this._worldTileMap.pixelPerfectRender;
+			return 0;
+		});
+	} 
 }

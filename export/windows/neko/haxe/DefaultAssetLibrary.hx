@@ -69,14 +69,47 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+		
 		Font.registerFont (__ASSET__flixel_fonts_nokiafc22_ttf);
 		Font.registerFont (__ASSET__flixel_fonts_monsterrat_ttf);
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		
 		
 		#if (windows || mac || linux)
 		
 		var useManifest = false;
+		useManifest = true;
 		useManifest = true;
 		useManifest = true;
 		useManifest = true;
@@ -103,6 +136,39 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		className.set ("flixel/images/ui/button.png", __ASSET__flixel_images_ui_button_png);
 		type.set ("flixel/images/ui/button.png", AssetType.IMAGE);
+		
+		className.set ("flixel/images/logo/default.png", __ASSET__flixel_images_logo_default_png);
+		type.set ("flixel/images/logo/default.png", AssetType.IMAGE);
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
 		
 		
 		if (useManifest) {
@@ -508,11 +574,12 @@ class DefaultAssetLibrary extends AssetLibrary {
 #if (windows || mac || linux)
 
 
-@:sound("C:/HaxeToolkit/haxe/lib/flixel/4,0,1/assets/sounds/beep.ogg") @:keep #if display private #end class __ASSET__flixel_sounds_beep_ogg extends flash.media.Sound {}
-@:sound("C:/HaxeToolkit/haxe/lib/flixel/4,0,1/assets/sounds/flixel.ogg") @:keep #if display private #end class __ASSET__flixel_sounds_flixel_ogg extends flash.media.Sound {}
-@:font("C:/HaxeToolkit/haxe/lib/flixel/4,0,1/assets/fonts/nokiafc22.ttf") @:keep #if display private #end class __ASSET__flixel_fonts_nokiafc22_ttf extends flash.text.Font {}
-@:font("C:/HaxeToolkit/haxe/lib/flixel/4,0,1/assets/fonts/monsterrat.ttf") @:keep #if display private #end class __ASSET__flixel_fonts_monsterrat_ttf extends flash.text.Font {}
-@:bitmap("C:/HaxeToolkit/haxe/lib/flixel/4,0,1/assets/images/ui/button.png") @:keep #if display private #end class __ASSET__flixel_images_ui_button_png extends flash.display.BitmapData {}
+@:sound("C:/HaxeToolkit/haxe/lib/flixel/4,2,0/assets/sounds/beep.ogg") @:keep #if display private #end class __ASSET__flixel_sounds_beep_ogg extends flash.media.Sound {}
+@:sound("C:/HaxeToolkit/haxe/lib/flixel/4,2,0/assets/sounds/flixel.ogg") @:keep #if display private #end class __ASSET__flixel_sounds_flixel_ogg extends flash.media.Sound {}
+@:font("C:/HaxeToolkit/haxe/lib/flixel/4,2,0/assets/fonts/nokiafc22.ttf") @:keep #if display private #end class __ASSET__flixel_fonts_nokiafc22_ttf extends flash.text.Font {}
+@:font("C:/HaxeToolkit/haxe/lib/flixel/4,2,0/assets/fonts/monsterrat.ttf") @:keep #if display private #end class __ASSET__flixel_fonts_monsterrat_ttf extends flash.text.Font {}
+@:bitmap("C:/HaxeToolkit/haxe/lib/flixel/4,2,0/assets/images/ui/button.png") @:keep #if display private #end class __ASSET__flixel_images_ui_button_png extends flash.display.BitmapData {}
+@:bitmap("C:/HaxeToolkit/haxe/lib/flixel/4,2,0/assets/images/logo/default.png") @:keep #if display private #end class __ASSET__flixel_images_logo_default_png extends flash.display.BitmapData {}
 
 
 
@@ -600,8 +667,40 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+		
 		openfl.text.Font.registerFont (__ASSET__OPENFL__flixel_fonts_nokiafc22_ttf);
 		openfl.text.Font.registerFont (__ASSET__OPENFL__flixel_fonts_monsterrat_ttf);
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		
 		#end
@@ -614,8 +713,12 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("assets/data/data-goes-here.txt", AssetType.TEXT);
 		path.set ("assets/fonts/consolas.ttf", "assets/fonts/consolas.ttf");
 		type.set ("assets/fonts/consolas.ttf", AssetType.FONT);
+		path.set ("assets/gfx/ui/light.png", "assets/gfx/ui/light.png");
+		type.set ("assets/gfx/ui/light.png", AssetType.IMAGE);
 		path.set ("assets/images/character.png", "assets/images/character.png");
 		type.set ("assets/images/character.png", AssetType.IMAGE);
+		path.set ("assets/images/gold.png", "assets/images/gold.png");
+		type.set ("assets/images/gold.png", AssetType.IMAGE);
 		path.set ("assets/images/images-go-here.txt", "assets/images/images-go-here.txt");
 		type.set ("assets/images/images-go-here.txt", AssetType.TEXT);
 		path.set ("assets/images/light.png", "assets/images/light.png");
@@ -626,10 +729,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("assets/music/music-goes-here.txt", AssetType.TEXT);
 		path.set ("assets/sounds/sounds-go-here.txt", "assets/sounds/sounds-go-here.txt");
 		type.set ("assets/sounds/sounds-go-here.txt", AssetType.TEXT);
-		path.set ("assets/ui/main.xml", "assets/ui/main.xml");
-		type.set ("assets/ui/main.xml", AssetType.TEXT);
-		path.set ("assets/ui/main_menu.xml", "assets/ui/main_menu.xml");
-		type.set ("assets/ui/main_menu.xml", AssetType.TEXT);
+		path.set ("assets/xml/InGame.xml", "assets/xml/InGame.xml");
+		type.set ("assets/xml/InGame.xml", AssetType.TEXT);
 		className.set ("flixel/sounds/beep.ogg", __ASSET__flixel_sounds_beep_ogg);
 		type.set ("flixel/sounds/beep.ogg", AssetType.SOUND);
 		className.set ("flixel/sounds/flixel.ogg", __ASSET__flixel_sounds_flixel_ogg);
@@ -640,6 +741,68 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("flixel/fonts/monsterrat.ttf", AssetType.FONT);
 		className.set ("flixel/images/ui/button.png", __ASSET__flixel_images_ui_button_png);
 		type.set ("flixel/images/ui/button.png", AssetType.IMAGE);
+		className.set ("flixel/images/logo/default.png", __ASSET__flixel_images_logo_default_png);
+		type.set ("flixel/images/logo/default.png", AssetType.IMAGE);
+		path.set ("flixel/flixel-ui/img/box.png", "flixel/flixel-ui/img/box.png");
+		type.set ("flixel/flixel-ui/img/box.png", AssetType.IMAGE);
+		path.set ("flixel/flixel-ui/img/button.png", "flixel/flixel-ui/img/button.png");
+		type.set ("flixel/flixel-ui/img/button.png", AssetType.IMAGE);
+		path.set ("flixel/flixel-ui/img/button_arrow_down.png", "flixel/flixel-ui/img/button_arrow_down.png");
+		type.set ("flixel/flixel-ui/img/button_arrow_down.png", AssetType.IMAGE);
+		path.set ("flixel/flixel-ui/img/button_arrow_left.png", "flixel/flixel-ui/img/button_arrow_left.png");
+		type.set ("flixel/flixel-ui/img/button_arrow_left.png", AssetType.IMAGE);
+		path.set ("flixel/flixel-ui/img/button_arrow_right.png", "flixel/flixel-ui/img/button_arrow_right.png");
+		type.set ("flixel/flixel-ui/img/button_arrow_right.png", AssetType.IMAGE);
+		path.set ("flixel/flixel-ui/img/button_arrow_up.png", "flixel/flixel-ui/img/button_arrow_up.png");
+		type.set ("flixel/flixel-ui/img/button_arrow_up.png", AssetType.IMAGE);
+		path.set ("flixel/flixel-ui/img/button_thin.png", "flixel/flixel-ui/img/button_thin.png");
+		type.set ("flixel/flixel-ui/img/button_thin.png", AssetType.IMAGE);
+		path.set ("flixel/flixel-ui/img/button_toggle.png", "flixel/flixel-ui/img/button_toggle.png");
+		type.set ("flixel/flixel-ui/img/button_toggle.png", AssetType.IMAGE);
+		path.set ("flixel/flixel-ui/img/check_box.png", "flixel/flixel-ui/img/check_box.png");
+		type.set ("flixel/flixel-ui/img/check_box.png", AssetType.IMAGE);
+		path.set ("flixel/flixel-ui/img/check_mark.png", "flixel/flixel-ui/img/check_mark.png");
+		type.set ("flixel/flixel-ui/img/check_mark.png", AssetType.IMAGE);
+		path.set ("flixel/flixel-ui/img/chrome.png", "flixel/flixel-ui/img/chrome.png");
+		type.set ("flixel/flixel-ui/img/chrome.png", AssetType.IMAGE);
+		path.set ("flixel/flixel-ui/img/chrome_flat.png", "flixel/flixel-ui/img/chrome_flat.png");
+		type.set ("flixel/flixel-ui/img/chrome_flat.png", AssetType.IMAGE);
+		path.set ("flixel/flixel-ui/img/chrome_inset.png", "flixel/flixel-ui/img/chrome_inset.png");
+		type.set ("flixel/flixel-ui/img/chrome_inset.png", AssetType.IMAGE);
+		path.set ("flixel/flixel-ui/img/chrome_light.png", "flixel/flixel-ui/img/chrome_light.png");
+		type.set ("flixel/flixel-ui/img/chrome_light.png", AssetType.IMAGE);
+		path.set ("flixel/flixel-ui/img/dropdown_mark.png", "flixel/flixel-ui/img/dropdown_mark.png");
+		type.set ("flixel/flixel-ui/img/dropdown_mark.png", AssetType.IMAGE);
+		path.set ("flixel/flixel-ui/img/finger_big.png", "flixel/flixel-ui/img/finger_big.png");
+		type.set ("flixel/flixel-ui/img/finger_big.png", AssetType.IMAGE);
+		path.set ("flixel/flixel-ui/img/finger_small.png", "flixel/flixel-ui/img/finger_small.png");
+		type.set ("flixel/flixel-ui/img/finger_small.png", AssetType.IMAGE);
+		path.set ("flixel/flixel-ui/img/hilight.png", "flixel/flixel-ui/img/hilight.png");
+		type.set ("flixel/flixel-ui/img/hilight.png", AssetType.IMAGE);
+		path.set ("flixel/flixel-ui/img/invis.png", "flixel/flixel-ui/img/invis.png");
+		type.set ("flixel/flixel-ui/img/invis.png", AssetType.IMAGE);
+		path.set ("flixel/flixel-ui/img/minus_mark.png", "flixel/flixel-ui/img/minus_mark.png");
+		type.set ("flixel/flixel-ui/img/minus_mark.png", AssetType.IMAGE);
+		path.set ("flixel/flixel-ui/img/plus_mark.png", "flixel/flixel-ui/img/plus_mark.png");
+		type.set ("flixel/flixel-ui/img/plus_mark.png", AssetType.IMAGE);
+		path.set ("flixel/flixel-ui/img/radio.png", "flixel/flixel-ui/img/radio.png");
+		type.set ("flixel/flixel-ui/img/radio.png", AssetType.IMAGE);
+		path.set ("flixel/flixel-ui/img/radio_dot.png", "flixel/flixel-ui/img/radio_dot.png");
+		type.set ("flixel/flixel-ui/img/radio_dot.png", AssetType.IMAGE);
+		path.set ("flixel/flixel-ui/img/swatch.png", "flixel/flixel-ui/img/swatch.png");
+		type.set ("flixel/flixel-ui/img/swatch.png", AssetType.IMAGE);
+		path.set ("flixel/flixel-ui/img/tab.png", "flixel/flixel-ui/img/tab.png");
+		type.set ("flixel/flixel-ui/img/tab.png", AssetType.IMAGE);
+		path.set ("flixel/flixel-ui/img/tab_back.png", "flixel/flixel-ui/img/tab_back.png");
+		type.set ("flixel/flixel-ui/img/tab_back.png", AssetType.IMAGE);
+		path.set ("flixel/flixel-ui/img/tooltip_arrow.png", "flixel/flixel-ui/img/tooltip_arrow.png");
+		type.set ("flixel/flixel-ui/img/tooltip_arrow.png", AssetType.IMAGE);
+		path.set ("flixel/flixel-ui/xml/defaults.xml", "flixel/flixel-ui/xml/defaults.xml");
+		type.set ("flixel/flixel-ui/xml/defaults.xml", AssetType.TEXT);
+		path.set ("flixel/flixel-ui/xml/default_loading_screen.xml", "flixel/flixel-ui/xml/default_loading_screen.xml");
+		type.set ("flixel/flixel-ui/xml/default_loading_screen.xml", AssetType.TEXT);
+		path.set ("flixel/flixel-ui/xml/default_popup.xml", "flixel/flixel-ui/xml/default_popup.xml");
+		type.set ("flixel/flixel-ui/xml/default_popup.xml", AssetType.TEXT);
 		
 		
 		#elseif html5
@@ -654,7 +817,13 @@ class DefaultAssetLibrary extends AssetLibrary {
 		id = "assets/fonts/consolas.ttf";
 		path.set (id, id);
 		type.set (id, AssetType.FONT);
+		id = "assets/gfx/ui/light.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
 		id = "assets/images/character.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/gold.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
 		id = "assets/images/images-go-here.txt";
@@ -672,10 +841,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 		id = "assets/sounds/sounds-go-here.txt";
 		path.set (id, id);
 		type.set (id, AssetType.TEXT);
-		id = "assets/ui/main.xml";
-		path.set (id, id);
-		type.set (id, AssetType.TEXT);
-		id = "assets/ui/main_menu.xml";
+		id = "assets/xml/InGame.xml";
 		path.set (id, id);
 		type.set (id, AssetType.TEXT);
 		id = "flixel/sounds/beep.ogg";
@@ -698,6 +864,100 @@ class DefaultAssetLibrary extends AssetLibrary {
 		path.set (id, id);
 		
 		type.set (id, AssetType.IMAGE);
+		id = "flixel/images/logo/default.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "flixel/flixel-ui/img/box.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "flixel/flixel-ui/img/button.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "flixel/flixel-ui/img/button_arrow_down.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "flixel/flixel-ui/img/button_arrow_left.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "flixel/flixel-ui/img/button_arrow_right.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "flixel/flixel-ui/img/button_arrow_up.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "flixel/flixel-ui/img/button_thin.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "flixel/flixel-ui/img/button_toggle.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "flixel/flixel-ui/img/check_box.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "flixel/flixel-ui/img/check_mark.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "flixel/flixel-ui/img/chrome.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "flixel/flixel-ui/img/chrome_flat.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "flixel/flixel-ui/img/chrome_inset.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "flixel/flixel-ui/img/chrome_light.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "flixel/flixel-ui/img/dropdown_mark.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "flixel/flixel-ui/img/finger_big.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "flixel/flixel-ui/img/finger_small.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "flixel/flixel-ui/img/hilight.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "flixel/flixel-ui/img/invis.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "flixel/flixel-ui/img/minus_mark.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "flixel/flixel-ui/img/plus_mark.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "flixel/flixel-ui/img/radio.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "flixel/flixel-ui/img/radio_dot.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "flixel/flixel-ui/img/swatch.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "flixel/flixel-ui/img/tab.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "flixel/flixel-ui/img/tab_back.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "flixel/flixel-ui/img/tooltip_arrow.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "flixel/flixel-ui/xml/defaults.xml";
+		path.set (id, id);
+		type.set (id, AssetType.TEXT);
+		id = "flixel/flixel-ui/xml/default_loading_screen.xml";
+		path.set (id, id);
+		type.set (id, AssetType.TEXT);
+		id = "flixel/flixel-ui/xml/default_popup.xml";
+		path.set (id, id);
+		type.set (id, AssetType.TEXT);
 		
 		
 		var assetsPrefix = null;
@@ -728,6 +988,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 		useManifest = true;
 		useManifest = true;
 		useManifest = true;
+		useManifest = true;
 		
 		className.set ("flixel/sounds/beep.ogg", __ASSET__flixel_sounds_beep_ogg);
 		type.set ("flixel/sounds/beep.ogg", AssetType.SOUND);
@@ -743,6 +1004,39 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		className.set ("flixel/images/ui/button.png", __ASSET__flixel_images_ui_button_png);
 		type.set ("flixel/images/ui/button.png", AssetType.IMAGE);
+		
+		className.set ("flixel/images/logo/default.png", __ASSET__flixel_images_logo_default_png);
+		type.set ("flixel/images/logo/default.png", AssetType.IMAGE);
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
 		
 		
 		if (useManifest) {
@@ -1472,11 +1766,43 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 
+
 @:keep @:bind #if display private #end class __ASSET__flixel_sounds_beep_ogg extends null { }
 @:keep @:bind #if display private #end class __ASSET__flixel_sounds_flixel_ogg extends null { }
 @:keep @:bind #if display private #end class __ASSET__flixel_fonts_nokiafc22_ttf extends null { }
 @:keep @:bind #if display private #end class __ASSET__flixel_fonts_monsterrat_ttf extends null { }
 @:keep @:bind #if display private #end class __ASSET__flixel_images_ui_button_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__flixel_images_logo_default_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 #elseif html5
@@ -1494,8 +1820,40 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 
+
 @:keep #if display private #end class __ASSET__flixel_fonts_nokiafc22_ttf extends lime.text.Font { public function new () { super (); name = "Nokia Cellphone FC Small"; } } 
 @:keep #if display private #end class __ASSET__flixel_fonts_monsterrat_ttf extends lime.text.Font { public function new () { super (); name = "Monsterrat"; } } 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1507,11 +1865,12 @@ class DefaultAssetLibrary extends AssetLibrary {
 #if (windows || mac || linux || cpp)
 
 
-@:file("C:/HaxeToolkit/haxe/lib/flixel/4,0,1/assets/sounds/beep.ogg") #if display private #end class __ASSET__flixel_sounds_beep_ogg extends lime.utils.ByteArray {}
-@:file("C:/HaxeToolkit/haxe/lib/flixel/4,0,1/assets/sounds/flixel.ogg") #if display private #end class __ASSET__flixel_sounds_flixel_ogg extends lime.utils.ByteArray {}
-@:font("C:/HaxeToolkit/haxe/lib/flixel/4,0,1/assets/fonts/nokiafc22.ttf") #if display private #end class __ASSET__flixel_fonts_nokiafc22_ttf extends lime.text.Font {}
-@:font("C:/HaxeToolkit/haxe/lib/flixel/4,0,1/assets/fonts/monsterrat.ttf") #if display private #end class __ASSET__flixel_fonts_monsterrat_ttf extends lime.text.Font {}
-@:image("C:/HaxeToolkit/haxe/lib/flixel/4,0,1/assets/images/ui/button.png") #if display private #end class __ASSET__flixel_images_ui_button_png extends lime.graphics.Image {}
+@:file("C:/HaxeToolkit/haxe/lib/flixel/4,2,0/assets/sounds/beep.ogg") #if display private #end class __ASSET__flixel_sounds_beep_ogg extends lime.utils.ByteArray {}
+@:file("C:/HaxeToolkit/haxe/lib/flixel/4,2,0/assets/sounds/flixel.ogg") #if display private #end class __ASSET__flixel_sounds_flixel_ogg extends lime.utils.ByteArray {}
+@:font("C:/HaxeToolkit/haxe/lib/flixel/4,2,0/assets/fonts/nokiafc22.ttf") #if display private #end class __ASSET__flixel_fonts_nokiafc22_ttf extends lime.text.Font {}
+@:font("C:/HaxeToolkit/haxe/lib/flixel/4,2,0/assets/fonts/monsterrat.ttf") #if display private #end class __ASSET__flixel_fonts_monsterrat_ttf extends lime.text.Font {}
+@:image("C:/HaxeToolkit/haxe/lib/flixel/4,2,0/assets/images/ui/button.png") #if display private #end class __ASSET__flixel_images_ui_button_png extends lime.graphics.Image {}
+@:image("C:/HaxeToolkit/haxe/lib/flixel/4,2,0/assets/images/logo/default.png") #if display private #end class __ASSET__flixel_images_logo_default_png extends lime.graphics.Image {}
 
 
 

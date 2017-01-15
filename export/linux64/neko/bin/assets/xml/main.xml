@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<data>  
+<!--     <sprite src="ui/light.png" x="0" y="0"/>
+ -->
+    <button x="0" y="0" name="battle" use_def="text_button" label="Inventory">           
+	</button>
+</data>
